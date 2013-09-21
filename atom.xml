@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Code For Fun]]></title>
+  <subtitle><![CDATA[I Share, therefore I am]]></subtitle>
+  <link href="http://code4fun.cn/atom.xml" rel="self"/>
+  <link href="http://code4fun.cn"/>
+  <updated>2013-09-21T15:32:49.859Z</updated>
+  <id>http://code4fun.cn/</id>
+  <author>
+    <name><![CDATA[Jerry li]]></name>
+    <email><![CDATA[leezhm(at)126.com]]></email>
+  </author>
+  <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[How to resign a iOS app ?]]></title>
+    <link href="http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/"/>
+    <id>http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/</id>
+    <published>2013-09-19T15:35:28.000Z</published>
+    <updated>2013-09-21T13:50:33.000Z</updated>
+    <content type="html"><![CDATA[<p>As may we know, we can distribute apps with enterprise account to any devices without add the device id into device list. This is very useful when the developers are not in the same offices or a multi-people project. So how to do that?</p>
+<h2><strong>Generate Production/Distribution Certificates</strong></h2>
+<ol>
+<li><p>login the iOS dev center with your enterprise account, and click “Certificates, Identifiers &amp; Profiles”.</p>
+</li>
+<li><p>Enter “Certificates” page and and select “Production”.</p>
+</li>
+<li><p>Create a production(or distribution) certificate.(Add button on the top right of panel). Following creating instructions one  by one. During this step, you should note you have to generate a Certificate Signing Request from Keychain Access and them uploading it.(Here you can learn how to obtain a CSR <a href="http://stackoverflow.com/questions/12126496/how-to-obtain-certificate-signing-request" target="_blank">how to obtain CSR</a></p>
+</li>
+<li><p>Ok, you can download the the certificates if the third step successes.</p>
+</li>
+<li><p>Double click the certificate, and then you can find this certificate in Keychain Access.</p>
+</li>
+</ol>
+<h2><strong>Generate Distribution Provision Profile</strong></h2>
+<ol>
+<li><p>Changed to the “Provisioning Profiles” item and click “Distribution”.</p>
+</li>
+<li><p>Select and Click “Add” button on the top right of panel.</p>
+</li>
+<li><p>Following instructions one by one, “In-House” Provision Profiles and right “Production/Distribution Certificate” that you create before.</p>
+</li>
+<li><p>Success, and download it.</p>
+</li>
+<li><p>Double click to add it to x-code.</p>
+</li>
+</ol>
+<p>OK, you have finish the preparation. and next you can resign the iOS app.</p>
+<h2><strong>Resign iOS App</strong></h2>
+<p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in &quot;~/Downloads&quot; folder.</p>
+<pre><code><span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</span>
+
+<span class="comment">unzip</span> <span class="comment">YourApp</span>.<span class="comment">ipa</span>
+
+<span class="comment">rm</span> <span class="literal">-</span><span class="comment">r</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/_CodeSignature</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/CodeResources</span>
+
+<span class="comment">cp</span> <span class="comment">~/Downloads/YourApp</span>.<span class="comment">mobileprovision</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/embedded</span>.<span class="comment">mobileprovision</span>
+
+<span class="comment">codesign</span> <span class="literal">-</span><span class="comment">f</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">"iPhone</span> <span class="comment">Distribution:</span> <span class="comment">xxxx"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">resource</span>-<span class="comment">rules</span> <span class="comment">"Payload/YourApp</span>.<span class="comment">app/ResourceRules</span>.<span class="comment">plist"</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app</span>
+
+<span class="comment">zip</span> <span class="literal">-</span><span class="comment">qr</span> <span class="comment">"YourApp</span>.<span class="comment">resigned</span>.<span class="comment">ipa"</span> <span class="comment">Payload</span>
+
+<span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</code></pre>
+<p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
+]]></content>
+    <category scheme="http://code4fun.cn/tags/文章，iOS/" term="文章，iOS"/>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[艳阳中秋，呆家里折腾新Blog]]></title>
+    <link href="http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/"/>
+    <id>http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/</id>
+    <published>2013-09-19T09:10:28.000Z</published>
+    <updated>2013-09-21T13:51:26.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li><strong><em>闲扯由来</em></strong></li>
+</ul>
+<p>之前基于<a href="http://wordpress.org/" target="_blank">wordpress</a>的blog在VPS到期后，就不想续费折腾了。在这里还是要感谢这个伟大的开源项目，你带给我了许多方便。</p>
+<p>其实我觉得我是个很懒的完美主义者，话有点不顺口，细想也不通的，但是我就是这么认为的。每每总结留在硬盘上的一篇篇未写完的blog，理由就是排版这么烂，发上去也需要再排，而且还复杂，不好看。故因为不完美，所以放弃了。曾经有一段时间我就去折腾CSS，但很快发现也没那么容易折腾，花了时间还来不了效果。</p>
+<p>一切都在我接触到<a href="http://wowubuntu.com/markdown/" target="_blank">markdown</a>之后改变，简洁的语法，更多的时间可以focus到内容上。但是wordpress对于markdown支持的并不好，所以就一直寻找一个直接支持markdown语法的blog framework。</p>
+<p>在经过多次的测试和咨询之后，答案就是 <a href="https://github.com" target="_blank">Github</a> + <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>。由来废话说完，就应该进入主题了—折腾不止，生命不息</p>
+<ul>
+<li><p><strong><em>切入正题</em></strong></p>
+<ul>
+<li>Github<br>  绝大部分程序猿肯定都知道<a href="https://github.com" target="_blank">Github</a>，也应该拥有自己的账号。如果没有，你现在就应该去创建一个，而且后面也需要用到这个。通过Github，我们可以很方便地分享我们的项目，进行代码管理,重构，与他人协作完成一个项目（当然如果你需要创建私人项目，你需要付费）。<br>  但是在这里，需要用Github提供的<a href="http://pages.github.com/" target="_blank">Github Pages</a>来做我新Blog的服务器。<pre><code>  1. Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。
+  2. 支持Markdown语法来发布文章
+  3. 可以很方便地用git来add, <span class="operator"><span class="keyword">commit</span>和push我的文章。
+  <span class="number">4.</span> 对blog拥有完全的控制权。</code></pre>
+</li>
+<li>Hexo<br>  其实<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>对于我也是蛮陌生的。那为啥选择Hexo，而不选择更成熟，更多人使用的<a href="http://octopress.org/" target="_blank">Octopress</a>呢？因为我学过一段时间的<a href="http://nodejs.org/" target="_blank">Node.js</a>,更喜欢Node.js的速度，绝对比基于Ruby的Octopress快。<pre><code>  Hexo <span class="keyword">is</span> a fast, simple <span class="keyword">and</span> powerful blog framework. It parses your 
+  posts <span class="keyword">with</span> Markdown <span class="keyword">or</span> other render engine <span class="keyword">and</span> generates static 
+  files <span class="keyword">with</span> the beautiful theme. <span class="keyword">All</span> <span class="keyword">of</span> these just take seconds.</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong><em>安装搭建</em></strong></p>
+<ol>
+<li><a href="http://code.google.com/p/git-osx-installer/" target="_blank">Git</a>，下载安装git for mac，完成后查看版本信息<pre><code> <span class="comment">git</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</code></pre>
+</li>
+<li><p><a href="http://nodejs.org/" target="_blank">Node.js</a>，可以去官网下载pkg文件安装，但是这里我选择通过nvm安装。</p>
+<pre><code> // 安装nvm
+ curl https://raw<span class="preprocessor">.github</span><span class="preprocessor">.com</span>/creationix/nvm/master/install<span class="preprocessor">.sh</span> | sh
+ // 然后安装Node<span class="preprocessor">.js</span>
+ nvm install <span class="number">0.10</span><span class="number">.18</span></code></pre>
+</li>
+<li><p>通过npm安装Hexo(注意这里是npm，不是nvm)</p>
+<pre><code> <span class="title">npm</span> install -g hexo</code></pre>
+</li>
+<li><p>安装完成后，就可以初始化hexo，</p>
+<pre><code> <span class="comment">// 在这里，你需要确保你的目录正确</span>
+ hexo init ~<span class="regexp">/Developments/</span>Code4fun/Hexo</code></pre>
+<p>在指定目录生成了如下结构的文件</p>
+<pre><code>    .
+ ├── _config<span class="variable">.yml</span>   <span class="comment">// 站点配置文件，包含很多站点配置选项，比如域名</span>
+ ├── package<span class="variable">.json</span>  <span class="comment">// 应用程序数据，比如程序名字，版本号等</span>
+ ├── scaffolds     <span class="comment">// 存储要发布的post的基本文件</span>
+ ├── scripts       <span class="comment">// js文件，保存一个hexo的js扩展文件</span>
+ ├── source        <span class="comment">// 保存文章内容</span>
+ |   ├── _drafts   ---<span class="comment">// 草稿文件</span>
+ |   └── _posts    ---<span class="comment">// 发布的文章</span>
+ └── themes        <span class="comment">// 主题文件夹</span></code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong><em>配置站点</em></strong></p>
+<ol>
+<li><p>配置 _config.yml</p>
+<pre><code> # <span class="class">Site</span>
+ <span class="method">title:</span> <span class="class">Code</span> <span class="class">For</span> <span class="class">Fun</span>
+ <span class="method">subtitle:</span> <span class="class">I</span> <span class="class">Share</span>, therefore <span class="class">I</span> am
+ <span class="method">description:</span> <span class="class">A</span> iOS developer’s personal blog.
+ <span class="method">author:</span> <span class="class">Jerry</span> li
+ <span class="method">email:</span> leezhm(at)<span class="number">126.</span>com
+ <span class="method">language:</span> zh-<span class="class">CN</span>
+
+ # <span class="class">URL</span>
+ ## <span class="class">If</span> your site is put in a subdirectory, set url as 
+    <span class="string">'http://yoursite.com/child'</span> and root as <span class="string">'/child/'</span>
+ <span class="method">url:</span> <span class="method">http:</span>//code4fun.cn
+ <span class="method">root:</span> /
+ <span class="method">permalink:</span> :year-:month-:day/:title/</code></pre>
+</li>
+<li><p>本地测试</p>
+<pre><code> <span class="comment">// 生成文章</span>
+ hexo generate 
+ <span class="comment">// 运行默认的server</span>
+ hexo <span class="keyword">server</span>
+ <span class="comment">//[info] Hexo is running at localhost:4000/. Press Ctrl+C to stop.</span></code></pre>
+<p> 然后在你的浏览器中输入网址<a href="http://localhost:4000" target="_blank">localhost:4000</a>，测试。看是否可以看到默认页面。<br> 测试成功后，我们就需要把它送到Github Pages服务器上。</p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong><em>Github Pages</em></strong></p>
+<ol>
+<li>如果没有Github账号，请创建一个账号，然后创建一个Repository。<ul>
+<li>创建一个blog网站<pre><code>  如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是
+  你的Github账户名<span class="variable">.github</span><span class="variable">.com</span>（比如我的就是 leezhm<span class="variable">.github</span><span class="variable">.com</span>），否则Github无法
+  提供解析。</code></pre>
+</li>
+<li>为一个Project创建Page<pre><code>  在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，
+  否则不能正确解析页面。至于怎么在Github上创建branch，并设置<span class="keyword">default</span> branch，
+  请查询Github Help。</code></pre>
+补充创建和删除branch<a href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository" target="_blank">Github - Create/Delete branch</a>，以及<a href="https://help.github.com/articles/setting-the-default-branch" target="_blank">Github - Set default branch</a>网址。<br><em>在这里我选择的是创建一个blog网站</em></li>
+</ul>
+</li>
+<li><p>配置_config.yml中的deploy</p>
+<pre><code>   # <span class="class">Deployment</span>
+ ## <span class="class">Docs</span>: <span class="method">http:</span>//zespia.tw/hexo/docs/deploy.html
+ <span class="method">deploy:</span>
+       <span class="method">type:</span> github
+       <span class="method">repository:</span> <span class="method">https:</span>//github.com/leezhm/leezhm.github.com.git
+       <span class="method">branch:</span> master</code></pre>
+<p>   在这里，需要注意不要写错地址，最好用https。另外branch应该是根据创建的类型不同，做更更改的。</p>
+</li>
+<li><p>生成并发布你网站</p>
+<pre><code> <span class="comment">// 讲markdown文件，生成静态html文件</span>
+ hexo generate
+
+ <span class="comment">// 发布到Github对应的Repository中</span>
+ hexo deploy</code></pre>
+<p> 到此应该大功告成，等待大约10分钟之后，你就应该可以使用 <a href="http://你的github账号名.github.io" target="_blank">http://你的github账号名.github.io</a> 来访问你的网站。</p>
+</li>
+</ol>
+</li>
+<li><p><strong><em>补充</em></strong></p>
+<p>  如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
+</li>
+</ul>
+]]></content>
+    <category scheme="http://code4fun.cn/tags/文章，Github Pages，Hexo/" term="文章，Github Pages，Hexo"/>
+  </entry>
+</feed>
