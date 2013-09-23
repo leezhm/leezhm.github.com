@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://code4fun.cn/2013-09-24/explicitly-release-resources-in-c/</loc>
+    <lastmod>2013-09-23T17:38:04.000Z</lastmod>
+  </url>
+  <url>
     <loc>http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/</loc>
     <lastmod>2013-09-23T17:19:25.000Z</lastmod>
   </url>
