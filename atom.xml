@@ -4,7 +4,7 @@
   <subtitle><![CDATA[I Share, therefore I am]]></subtitle>
   <link href="http://code4fun.cn/atom.xml" rel="self"/>
   <link href="http://code4fun.cn"/>
-  <updated>2013-09-23T16:11:16.022Z</updated>
+  <updated>2013-09-23T16:26:41.386Z</updated>
   <id>http://code4fun.cn/</id>
   <author>
     <name><![CDATA[Jerry li]]></name>
@@ -16,7 +16,7 @@
     <link href="http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/"/>
     <id>http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/</id>
     <published>2013-09-19T15:35:28.000Z</published>
-    <updated>2013-09-23T16:11:00.000Z</updated>
+    <updated>2013-09-23T16:26:34.000Z</updated>
     <content type="html"><![CDATA[<p>As may we know, we can distribute apps with enterprise account to any devices without add the device id into device list. This is very useful when the developers are not in the same offices or a multi-people project. So how to do that?</p>
 <h2><strong>Generate Production/Distribution Certificates</strong></h2>
 <ol>
@@ -47,16 +47,25 @@
 <p>OK, you have finish the preparation. and next you can resign the iOS app.</p>
 <h2><strong>Resign iOS App</strong></h2>
 <p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in &quot;~/Downloads&quot; folder.</p>
-<pre><code><span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</span>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</span>
 <span class="comment">unzip</span> <span class="comment">YourApp</span>.<span class="comment">ipa</span>
 <span class="comment">rm</span> <span class="literal">-</span><span class="comment">r</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/_CodeSignature</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/CodeResources</span>
 <span class="comment">cp</span> <span class="comment">~/Downloads/YourApp</span>.<span class="comment">mobileprovision</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/embedded</span>.<span class="comment">mobileprovision</span>
 <span class="comment">codesign</span> <span class="literal">-</span><span class="comment">f</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">"iPhone</span> <span class="comment">Distribution:</span> <span class="comment">xxxx"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">resource</span>-<span class="comment">rules</span> <span class="comment">"Payload/YourApp</span>.<span class="comment">app/ResourceRules</span>.<span class="comment">plist"</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app</span>
 <span class="comment">zip</span> <span class="literal">-</span><span class="comment">qr</span> <span class="comment">"YourApp</span>.<span class="comment">resigned</span>.<span class="comment">ipa"</span> <span class="comment">Payload</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</code></pre>
+<span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload
+</pre></td></tr></table></figure>
+
 <p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
 ]]></content>
-    <category scheme="http://code4fun.cn/tags/iOS/" term="iOS"/>
+    <category scheme="http://code4fun.cn/tags/文章, iOS/" term="文章, iOS"/>
   </entry>
   <entry>
     <title type="html"><![CDATA[艳阳中秋，呆家里折腾新Blog]]></title>
