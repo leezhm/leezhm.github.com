@@ -1,79 +1,63 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Code For Fun]]></title>
-  <subtitle><![CDATA[I Share, therefore I am]]></subtitle>
-  <link href="http://code4fun.cn/atom.xml" rel="self"/>
-  <link href="http://code4fun.cn"/>
-  <updated>2013-09-23T17:04:25.636Z</updated>
-  <id>http://code4fun.cn/</id>
-  <author>
-    <name><![CDATA[Jerry li]]></name>
-    <email><![CDATA[leezhm(at)126.com]]></email>
-  </author>
-  <generator uri="http://zespia.tw/hexo">Hexo</generator>
-  <entry>
-    <title type="html"><![CDATA[How to resign a iOS app ?]]></title>
-    <link href="http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/"/>
-    <id>http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/</id>
-    <published>2013-09-19T15:35:28.000Z</published>
-    <updated>2013-09-23T16:43:19.000Z</updated>
-    <content type="html"><![CDATA[<p>As may we know, we can distribute apps with enterprise account to any devices without add the device id into device list. This is very useful when the developers are not in the same offices or a multi-people project. So how to do that?</p>
-<h2><strong>Generate Production/Distribution Certificates</strong></h2>
-<ol>
-<li><p>login the iOS dev center with your enterprise account, and click “Certificates, Identifiers &amp; Profiles”.</p>
-</li>
-<li><p>Enter “Certificates” page and and select “Production”.</p>
-</li>
-<li><p>Create a production(or distribution) certificate.(Add button on the top right of panel). Following creating instructions one  by one. During this step, you should note you have to generate a Certificate Signing Request from Keychain Access and them uploading it.(Here you can learn how to obtain a CSR <a href="http://stackoverflow.com/questions/12126496/how-to-obtain-certificate-signing-request" target="_blank">how to obtain CSR</a></p>
-</li>
-<li><p>Ok, you can download the the certificates if the third step successes.</p>
-</li>
-<li><p>Double click the certificate, and then you can find this certificate in Keychain Access.</p>
-</li>
-</ol>
-<h2><strong>Generate Distribution Provision Profile</strong></h2>
-<ol>
-<li><p>Changed to the “Provisioning Profiles” item and click “Distribution”.</p>
-</li>
-<li><p>Select and Click “Add” button on the top right of panel.</p>
-</li>
-<li><p>Following instructions one by one, “In-House” Provision Profiles and right “Production/Distribution Certificate” that you create before.</p>
-</li>
-<li><p>Success, and download it.</p>
-</li>
-<li><p>Double click to add it to x-code.</p>
-</li>
-</ol>
-<p>OK, you have finish the preparation. and next you can resign the iOS app.</p>
-<h2><strong>Resign iOS App</strong></h2>
-<p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in &quot;~/Downloads&quot; folder.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="code"><pre><span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</span>
-<span class="comment">unzip</span> <span class="comment">YourApp</span>.<span class="comment">ipa</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">r</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/_CodeSignature</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/CodeResources</span>
-<span class="comment">cp</span> <span class="comment">~/Downloads/YourApp</span>.<span class="comment">mobileprovision</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/embedded</span>.<span class="comment">mobileprovision</span>
-<span class="comment">codesign</span> <span class="literal">-</span><span class="comment">f</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">"iPhone</span> <span class="comment">Distribution:</span> <span class="comment">xxxx"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">resource</span>-<span class="comment">rules</span> <span class="comment">"Payload/YourApp</span>.<span class="comment">app/ResourceRules</span>.<span class="comment">plist"</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app</span>
-<span class="comment">zip</span> <span class="literal">-</span><span class="comment">qr</span> <span class="comment">"YourApp</span>.<span class="comment">resigned</span>.<span class="comment">ipa"</span> <span class="comment">Payload</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload
-</pre></td></tr></table></figure>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 2 页 | Code For Fun</title>
+  <meta name="author" content="Jerry li">
 
-<p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
-]]></content>
-    <category scheme="http://code4fun.cn/tags/文章, iOS/" term="文章, iOS"/>
-  </entry>
-  <entry>
-    <title type="html"><![CDATA[艳阳中秋，呆家里折腾新Blog]]></title>
-    <link href="http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/"/>
-    <id>http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/</id>
-    <published>2013-09-19T09:10:28.000Z</published>
-    <updated>2013-09-23T17:04:20.000Z</updated>
-    <content type="html"><![CDATA[<ul>
+  
+  <meta name="description" content="A iOS developer’s personal blog.">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="Code For Fun" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-44223767-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">所有文章</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner">
+  <article class="post">
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2013-09-19/艳阳中秋，呆家里折腾新blog/">艳阳中秋，呆家里折腾新Blog</a></h1>
+  
+
+    <time datetime="2013-09-19T09:10:28.000Z">
+  <span class="day">19</span><span class="month">9月</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <ul>
 <li><strong><em>闲扯由来</em></strong></li>
 </ul>
 <p>之前基于<a href="http://wordpress.org/" target="_blank">wordpress</a>的blog在VPS到期后，就不想续费折腾了。在这里还是要感谢这个伟大的开源项目，你带给我了许多方便。</p>
@@ -226,7 +210,68 @@ hexo <span class="keyword">server</span>
 <p>  如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
 </li>
 </ul>
-]]></content>
-    <category scheme="http://code4fun.cn/tags/文章，Github Pages，Hexo/" term="文章，Github Pages，Hexo"/>
-  </entry>
-</feed>
+
+    
+    
+    <footer class="meta">
+      
+      
+  <div class="tags">
+<a href="/tags/文章，Github Pages，Hexo/">文章，Github Pages，Hexo</a></div>
+
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+
+<nav id="pagenavi">
+  
+    <a href="/" class="alignleft prev">上一页</a>
+  
+  
+  <div class="clearfix"></div>
+</nav></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+    <a class="weibo" href="http://weibo.com/leezhm" title="weibo">weibo</a>
+  
+  
+    <a class="github" href="https://github.com/leezhm" title="GitHub">GitHub</a>
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2013 Jerry li
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>
