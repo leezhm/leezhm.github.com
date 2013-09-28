@@ -167,19 +167,22 @@ hexo <span class="keyword">server</span>
 </ul>
 </li>
 <li><p>配置_config.yml中的deploy</p>
-<pre><code> <span class="preprocessor"># Deployment</span>
- <span class="preprocessor">## Docs: http://zespia.tw/hexo/docs/deploy.html</span>
- deploy:
-       type: github
-       repository: https://github<span class="preprocessor">.com</span>/leezhm/leezhm<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span></code></pre>
+ <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="preprocessor"># Deployment</span>
+<span class="preprocessor">## Docs: http://zespia.tw/hexo/docs/deploy.html</span>
+<span class="label">deploy:</span>
+      type: github
+<span class="label">repository:</span> https://github<span class="preprocessor">.com</span>/leezhm/leezhm<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span>
+</pre></td></tr></table></figure>
+
 <p>   在这里，需要注意不要写错地址，最好用https。另外branch应该是根据创建的类型不同，做更更改的。</p>
 </li>
 <li><p>生成并发布你网站</p>
-</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+ <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -191,8 +194,10 @@ hexo <span class="keyword">server</span>
         hexo deploy
 </pre></td></tr></table></figure>
 
-<pre><code>到此应该大功告成，等待大约<span class="number">10</span>分钟之后，你就应该可以使用 http://你的github账号名<span class="preprocessor">.github</span><span class="preprocessor">.io</span> 来访问你的网站。</code></pre>
-<ul>
+<p>到此应该大功告成，等待大约10分钟之后，你就应该可以使用 <a href="http://你的github账号名.github.io" target="_blank">http://你的github账号名.github.io</a> 来访问你的网站。</p>
+</li>
+</ol>
+</li>
 <li><p><strong><em>补充</em></strong></p>
 <p>  如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
 </li>
