@@ -163,106 +163,106 @@
 98
 99
 100
-</pre></td><td class="code"><pre>     namespace CSnippets<span class="variable">.GC</span>
-     {
-         using System;
-         using System<span class="variable">.Collections</span><span class="variable">.Generic</span>;
-         using System<span class="variable">.Linq</span>;
-         using System<span class="variable">.Text</span>;
-         using System<span class="variable">.IO</span>;
-      
-         <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">DisposeExample</span></span>
+</pre></td><td class="code"><pre>namespace CSnippets<span class="variable">.GC</span>
+{
+    using System;
+    using System<span class="variable">.Collections</span><span class="variable">.Generic</span>;
+    using System<span class="variable">.Linq</span>;
+    using System<span class="variable">.Text</span>;
+    using System<span class="variable">.IO</span>;
+
+    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">DisposeExample</span></span>
+    {
+        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> TestDispose()
         {
-            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> TestDispose()
+            <span class="keyword">try</span>
             {
-                <span class="keyword">try</span>
-                {
-                    string path = Environment<span class="variable">.CurrentDirectory</span> + <span class="string">"\\App.config"</span>;
-     
-                    FileStream fs = File<span class="variable">.OpenRead</span>(path);
-     
-                    DisposableResource dr = new DisposableResource(fs);
-                    
-                    <span class="comment">//</span>
-                    dr<span class="variable">.DoSomethingWithResource</span>();
-     
-                    <span class="comment">//</span>
-                    dr<span class="variable">.Dispose</span>();
-                }
-                <span class="keyword">catch</span> (FileNotFoundException expt)
-                {
-                    Console<span class="variable">.WriteLine</span>(expt<span class="variable">.Message</span>);
-                }
+                string path = Environment<span class="variable">.CurrentDirectory</span> + <span class="string">"\\App.config"</span>;
+
+                FileStream fs = File<span class="variable">.OpenRead</span>(path);
+
+                DisposableResource dr = new DisposableResource(fs);
+                
+                <span class="comment">//</span>
+                dr<span class="variable">.DoSomethingWithResource</span>();
+
+                <span class="comment">//</span>
+                dr<span class="variable">.Dispose</span>();
             }
-        }
-     
-        <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">DisposableResource</span> : <span class="id">IDisposable</span></span>
-        {
-            <span class="keyword">private</span> Stream resource = null;
-            <span class="keyword">private</span> <span class="keyword">bool</span> disposed = <span class="literal">false</span>;
-     
-            <span class="keyword">public</span> DisposableResource(Stream stream)
+            <span class="keyword">catch</span> (FileNotFoundException expt)
             {
-                <span class="keyword">if</span> (null == stream)
-                {
-                    <span class="keyword">throw</span> new ArgumentNullException(<span class="string">"stream is null ..."</span>);
-                }
-     
-                <span class="keyword">if</span> (!stream<span class="variable">.CanRead</span>)
-                {
-                    <span class="keyword">throw</span> new ArgumentException(<span class="string">"stream must be readable ..."</span>);
-                }
-     
-                resource = stream;
-                disposed = <span class="literal">false</span>;
-            }
-     
-            <span class="keyword">public</span> <span class="keyword">void</span> DoSomethingWithResource()
-            {
-                <span class="keyword">if</span> (disposed)
-                {
-                    <span class="keyword">throw</span> new ObjectDisposedException(<span class="string">"resource was disposed ..."</span>);
-                }
-     
-                <span class="keyword">int</span> num = (<span class="keyword">int</span>)resource<span class="variable">.Length</span>;
-                Console<span class="variable">.WriteLine</span>(<span class="string">"Number of bytes: {0}"</span>, num<span class="variable">.ToString</span>());
-            }
-     
-            <span class="keyword">public</span> <span class="keyword">void</span> Dispose()
-            {
-                Dispose(<span class="literal">true</span>);
-     
-                <span class="comment">//  Using SuppressFinalize in case a subclass</span>
-                <span class="comment">//  of this type implements a finalizer.</span>
-                System<span class="variable">.GC</span><span class="variable">.SuppressFinalize</span>(<span class="keyword">this</span>);
-            }
-    
-            <span class="keyword">protected</span> virtual <span class="keyword">void</span> Dispose(<span class="keyword">bool</span> disposing)
-            {
-                <span class="comment">// If you need thread safety, use a lock around these </span>
-                <span class="comment">// operations, as well as in your methods that use the resource.</span>
-                <span class="keyword">if</span> (!disposed)
-                {
-                    <span class="keyword">if</span> (disposing)
-                   {
-                        <span class="comment">// Release unmanaged resource</span>
-     
-                        <span class="keyword">if</span> (null != resource)
-                        {
-                            resource<span class="variable">.Dispose</span>();
-                            Console<span class="variable">.WriteLine</span>(<span class="string">"Object disposed ..."</span>);
-                        }
-                    }
-     
-                    <span class="comment">// Release managed resource</span>
-     
-                   <span class="comment">// Indicate that the instance has been disposed.</span>
-                    resource = null;
-                    disposed = <span class="literal">true</span>;
-                }
+                Console<span class="variable">.WriteLine</span>(expt<span class="variable">.Message</span>);
             }
         }
     }
+
+    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">DisposableResource</span> : <span class="id">IDisposable</span></span>
+    {
+        <span class="keyword">private</span> Stream resource = null;
+        <span class="keyword">private</span> <span class="keyword">bool</span> disposed = <span class="literal">false</span>;
+
+        <span class="keyword">public</span> DisposableResource(Stream stream)
+        {
+            <span class="keyword">if</span> (null == stream)
+            {
+                <span class="keyword">throw</span> new ArgumentNullException(<span class="string">"stream is null ..."</span>);
+            }
+
+            <span class="keyword">if</span> (!stream<span class="variable">.CanRead</span>)
+            {
+                <span class="keyword">throw</span> new ArgumentException(<span class="string">"stream must be readable ..."</span>);
+            }
+
+            resource = stream;
+            disposed = <span class="literal">false</span>;
+        }
+
+        <span class="keyword">public</span> <span class="keyword">void</span> DoSomethingWithResource()
+        {
+            <span class="keyword">if</span> (disposed)
+            {
+                <span class="keyword">throw</span> new ObjectDisposedException(<span class="string">"resource was disposed ..."</span>);
+            }
+
+            <span class="keyword">int</span> num = (<span class="keyword">int</span>)resource<span class="variable">.Length</span>;
+            Console<span class="variable">.WriteLine</span>(<span class="string">"Number of bytes: {0}"</span>, num<span class="variable">.ToString</span>());
+        }
+
+        <span class="keyword">public</span> <span class="keyword">void</span> Dispose()
+        {
+            Dispose(<span class="literal">true</span>);
+
+            <span class="comment">//  Using SuppressFinalize in case a subclass</span>
+            <span class="comment">//  of this type implements a finalizer.</span>
+            System<span class="variable">.GC</span><span class="variable">.SuppressFinalize</span>(<span class="keyword">this</span>);
+        }
+
+        <span class="keyword">protected</span> virtual <span class="keyword">void</span> Dispose(<span class="keyword">bool</span> disposing)
+        {
+            <span class="comment">// If you need thread safety, use a lock around these </span>
+            <span class="comment">// operations, as well as in your methods that use the resource.</span>
+            <span class="keyword">if</span> (!disposed)
+            {
+                <span class="keyword">if</span> (disposing)
+               {
+                    <span class="comment">// Release unmanaged resource</span>
+
+                    <span class="keyword">if</span> (null != resource)
+                    {
+                        resource<span class="variable">.Dispose</span>();
+                        Console<span class="variable">.WriteLine</span>(<span class="string">"Object disposed ..."</span>);
+                    }
+                }
+
+                <span class="comment">// Release managed resource</span>
+
+               <span class="comment">// Indicate that the instance has been disposed.</span>
+                resource = null;
+                disposed = <span class="literal">true</span>;
+            }
+        }
+    }
+}
 </pre></td></tr></table></figure>
 
 
@@ -329,64 +329,64 @@
 56
 57
 58
-</pre></td><td class="code"><pre>    <span class="regexp">//</span> Design pattern <span class="keyword">for</span> a base class.
-    public <span class="class"><span class="keyword">class</span> <span class="title">Base</span>:</span> IDisposable
+</pre></td><td class="code"><pre><span class="regexp">//</span> Design pattern <span class="keyword">for</span> a base class.
+public <span class="class"><span class="keyword">class</span> <span class="title">Base</span>:</span> IDisposable
+{
+    private bool disposed = <span class="literal">false</span>;
+ 
+    <span class="regexp">//</span>Implement IDisposable.
+    public <span class="reserved">void</span> Dispose()
     {
-        private bool disposed = <span class="literal">false</span>;
-     
-        <span class="regexp">//</span>Implement IDisposable.
-        public <span class="reserved">void</span> Dispose()
-        {
-            Dispose(<span class="literal">true</span>);
-            GC.SuppressFinalize(<span class="keyword">this</span>);
-        }
-     
-        protected virtual <span class="reserved">void</span> Dispose(bool disposing)
-        {
-            <span class="keyword">if</span> (!disposed)
- 	          {
-                <span class="keyword">if</span> (disposing)
-                {
-                    <span class="regexp">//</span> Free other state (managed objects).
-                }
-                <span class="regexp">//</span> Free your own state (unmanaged objects).
-                <span class="regexp">//</span> Set large fields to <span class="literal">null</span>.
-                disposed = <span class="literal">true</span>;
-            }
-        }
-     
-        <span class="regexp">//</span> Use C<span class="comment"># destructor syntax for finalization code.</span>
-        ~Base()
-        {
-            <span class="regexp">//</span> Simply call Dispose(<span class="literal">false</span>).
-            Dispose (<span class="literal">false</span>);
-        }
+        Dispose(<span class="literal">true</span>);
+        GC.SuppressFinalize(<span class="keyword">this</span>);
     }
-     
-    <span class="regexp">//</span> Design pattern <span class="keyword">for</span> a derived class.
-    public <span class="class"><span class="keyword">class</span> <span class="title">Derived</span>:</span> Base
+ 
+    protected virtual <span class="reserved">void</span> Dispose(bool disposing)
     {
-        private bool disposed = <span class="literal">false</span>;
-     
-        protected override <span class="reserved">void</span> Dispose(bool disposing)
-        {
-            <span class="keyword">if</span> (!disposed)
+        <span class="keyword">if</span> (!disposed)
+	          {
+            <span class="keyword">if</span> (disposing)
             {
-                <span class="keyword">if</span> (disposing)
-                {
-                    <span class="regexp">//</span> Release managed resources.
-                }
-                <span class="regexp">//</span> Release unmanaged resources.
-                <span class="regexp">//</span> Set large fields to <span class="literal">null</span>.
-               <span class="regexp">//</span> Call Dispose <span class="literal">on</span> your base class.
-                disposed = <span class="literal">true</span>;
+                <span class="regexp">//</span> Free other state (managed objects).
             }
-            base.Dispose(disposing);
+            <span class="regexp">//</span> Free your own state (unmanaged objects).
+            <span class="regexp">//</span> Set large fields to <span class="literal">null</span>.
+            disposed = <span class="literal">true</span>;
         }
-        <span class="regexp">//</span> The derived <span class="class"><span class="keyword">class</span> <span class="title">does</span> <span class="title">not</span> <span class="title">have</span> <span class="title">a</span> <span class="title">Finalize</span> <span class="title">method</span></span>
-        <span class="regexp">//</span> <span class="keyword">or</span> a Dispose method without parameters because it inherits
-        <span class="regexp">//</span> them from the base class.
     }
+ 
+    <span class="regexp">//</span> Use C<span class="comment"># destructor syntax for finalization code.</span>
+    ~Base()
+    {
+        <span class="regexp">//</span> Simply call Dispose(<span class="literal">false</span>).
+        Dispose (<span class="literal">false</span>);
+    }
+}
+ 
+<span class="regexp">//</span> Design pattern <span class="keyword">for</span> a derived class.
+public <span class="class"><span class="keyword">class</span> <span class="title">Derived</span>:</span> Base
+{
+    private bool disposed = <span class="literal">false</span>;
+ 
+    protected override <span class="reserved">void</span> Dispose(bool disposing)
+    {
+        <span class="keyword">if</span> (!disposed)
+        {
+            <span class="keyword">if</span> (disposing)
+            {
+                <span class="regexp">//</span> Release managed resources.
+            }
+            <span class="regexp">//</span> Release unmanaged resources.
+            <span class="regexp">//</span> Set large fields to <span class="literal">null</span>.
+           <span class="regexp">//</span> Call Dispose <span class="literal">on</span> your base class.
+            disposed = <span class="literal">true</span>;
+        }
+        base.Dispose(disposing);
+    }
+    <span class="regexp">//</span> The derived <span class="class"><span class="keyword">class</span> <span class="title">does</span> <span class="title">not</span> <span class="title">have</span> <span class="title">a</span> <span class="title">Finalize</span> <span class="title">method</span></span>
+    <span class="regexp">//</span> <span class="keyword">or</span> a Dispose method without parameters because it inherits
+    <span class="regexp">//</span> them from the base class.
+}
 </pre></td></tr></table></figure>
 
 <p>Aha, it looks same as the topic how to implement a Dispose method except the yellow part.Why does it need to do like that?</p>
@@ -413,24 +413,26 @@
 16
 17
 18
-</pre></td><td class="code"><pre>  using (Font ft = new Font(<span class="string">"Arial"</span>, <span class="number">15.0</span>f))
-  {
-      byte charset = ft<span class="preprocessor">.GdiCharSet</span><span class="comment">;</span>
-   
-      Console<span class="preprocessor">.WriteLine</span>(<span class="string">"Charset of Arial is {0}"</span>, charset)<span class="comment">;</span>
-  }
-   
-  Font ft2 = new Font(<span class="string">"Arial"</span>, <span class="number">10.0</span>f)<span class="comment">;</span>
-  using (ft2) // not recommended
-  {
-      // use font2
-      byte charset2 = ft2<span class="preprocessor">.GdiCharSet</span><span class="comment">;</span>
-   
-      Console<span class="preprocessor">.WriteLine</span>(<span class="string">"Charset 2 of Arial is {0}"</span>, charset2)<span class="comment">;</span>
-  }
-  // font2 is still <span class="keyword">in</span> scope
-  // but the method <span class="keyword">call</span> throws an exception
-  float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment">;</span>
+19
+</pre></td><td class="code"><pre>using (Font ft = new Font(<span class="string">"Arial"</span>, <span class="number">15.0</span>f))
+{
+    byte charset = ft<span class="preprocessor">.GdiCharSet</span><span class="comment">;</span>
+
+    Console<span class="preprocessor">.WriteLine</span>(<span class="string">"Charset of Arial is {0}"</span>, charset)<span class="comment">;</span>
+}
+
+Font ft2 = new Font(<span class="string">"Arial"</span>, <span class="number">10.0</span>f)<span class="comment">;</span>
+using (ft2) // not recommended
+{
+    // use font2
+    byte charset2 = ft2<span class="preprocessor">.GdiCharSet</span><span class="comment">;</span>
+
+    Console<span class="preprocessor">.WriteLine</span>(<span class="string">"Charset 2 of Arial is {0}"</span>, charset2)<span class="comment">;</span>
+}
+
+// font2 is still <span class="keyword">in</span> scope
+// but the method <span class="keyword">call</span> throws an exception
+float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment">;</span>
 </pre></td></tr></table></figure>
 
 <p>Of course, it is a much more complex topic of Garbage Collection in C# and there is several times contents about GC on MSDN than here.More details and comprehensive contents about Garbage Collection,see this webpage.have fun!</p>

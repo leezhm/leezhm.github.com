@@ -163,8 +163,8 @@ hexo <span class="keyword">server</span>
 <li><p><strong><em>Github Pages</em></strong></p>
 <ol>
 <li>如果没有Github账号，请创建一个账号，然后创建一个Repository。<ul>
-<li>创建一个blog网站<br>  如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是<br>  <strong>你的Github账户名.github.com(比如我的就是 leezhm.github.com)</strong><br>  否则Github无法提供解析。</li>
-<li>为一个Project创建Page<br>  在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，否则不能正确解析页面。至于怎么在Github上创建branch，并设置default branch，请查询Github Help。<br>补充创建和删除branch<a href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository" target="_blank">Github - Create/Delete branch</a>，以及<a href="https://help.github.com/articles/setting-the-default-branch" target="_blank">Github - Set default branch</a>网址。<br><em>在这里我选择的是创建一个blog网站</em></li>
+<li>创建一个blog网站<br>  如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是<br>  <strong><em>你的Github账户名.github.com(比如我的就是 leezhm.github.com)</em></strong><br>  否则Github无法提供解析。</li>
+<li>为一个Project创建Page<br>  在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，否则不能正确解析页面。至于怎么在Github上创建branch，并设置default branch，请查询Github Help。<br>补充创建和删除branch<a href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository" target="_blank">Github - Create/Delete branch</a>，以及<a href="https://help.github.com/articles/setting-the-default-branch" target="_blank">Github - Set default branch</a>网址。<br><strong><em>在这里我选择的是创建一个blog网站</em></strong></li>
 </ul>
 </li>
 <li><p>配置_config.yml中的deploy</p>
@@ -181,20 +181,17 @@ hexo <span class="keyword">server</span>
 3
 4
 5
-</pre></td><td class="code"><pre>    	<span class="comment">// 讲markdown文件，生成静态html文件</span>
+</pre></td><td class="code"><pre>    	<span class="comment">// 从markdown文件，生成静态html文件</span>
     	hexo generate
     	
     	<span class="comment">// 发布到Github对应的Repository中</span>
     	hexo deploy
 </pre></td></tr></table></figure>
 
-
+<p>到此应该大功告成，等待大约10分钟之后，你就应该可以使用 <a href="http://你的github账号名.github.io" target="_blank">http://你的github账号名.github.io</a> 来访问你的网站。</p>
 </li>
 </ol>
 </li>
-</ul>
-<pre><code>到此应该大功告成，等待大约<span class="number">10</span>分钟之后，你就应该可以使用 http://你的github账号名<span class="preprocessor">.github</span><span class="preprocessor">.io</span> 来访问你的网站。</code></pre>
-<ul>
 <li><p><strong><em>补充</em></strong></p>
 <p>  如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
 </li>
