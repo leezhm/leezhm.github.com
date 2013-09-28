@@ -4,7 +4,7 @@
   <subtitle><![CDATA[I Share, therefore I am]]></subtitle>
   <link href="http://code4fun.cn/atom.xml" rel="self"/>
   <link href="http://code4fun.cn"/>
-  <updated>2013-09-28T15:17:31.560Z</updated>
+  <updated>2013-09-28T15:24:00.166Z</updated>
   <id>http://code4fun.cn/</id>
   <author>
     <name><![CDATA[Jerry li]]></name>
@@ -16,7 +16,7 @@
     <link href="http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/"/>
     <id>http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/</id>
     <published>2013-09-28T14:18:22.000Z</published>
-    <updated>2013-09-28T14:47:53.000Z</updated>
+    <updated>2013-09-28T15:23:52.000Z</updated>
     <content type="html"><![CDATA[<h3><em>How to fork a repo from <a href="http://www.github.com" target="_blank">github</a>?</em></h3>
 <ol>
 <li><p>Login the github and click the “Fork” button.</p>
@@ -43,7 +43,7 @@ $ git merge upstream/master</code></pre>
 </li>
 </ol>
 ]]></content>
-    <category scheme="http://code4fun.cn/tags/文章Git/" term="文章Git"/>
+    <category scheme="http://code4fun.cn/tags/文章，Git/" term="文章，Git"/>
   </entry>
   <entry>
     <title type="html"><![CDATA[Explicitly Release Resources In C#]]></title>
