@@ -48,45 +48,22 @@
   <header>
     
   
-    <h1 class="title"><a href="/2013-09-19/How_to_resign_a_iOS_app/">How to resign a iOS app ?</a></h1>
+    <h1 class="title"><a href="/2013-09-24/explicitly-release-resources-in-c/">Explicitly Release Resources In C#</a></h1>
   
 
-    <time datetime="2013-09-19T15:35:28.000Z">
-  <span class="day">19</span><span class="month">9月</span>
+    <time datetime="2013-09-23T17:24:06.000Z">
+  <span class="day">24</span><span class="month">9月</span>
 </time>
   </header>
   <div class="entry-content">
     
-      <p>As may we know, we can distribute apps with enterprise account to any devices without add the device id into device list. This is very useful when the developers are not in the same offices or a multi-people project. So how to do that?</p>
-<h2><strong>Generate Production/Distribution Certificates</strong></h2>
-<ol>
-<li><p>login the iOS dev center with your enterprise account, and click “Certificates, Identifiers &amp; Profiles”.</p>
-</li>
-<li><p>Enter “Certificates” page and and select “Production”.</p>
-</li>
-<li><p>Create a production(or distribution) certificate.(Add button on the top right of panel). Following creating instructions one  by one. During this step, you should note you have to generate a Certificate Signing Request from Keychain Access and them uploading it.(Here you can learn how to obtain a CSR <a href="http://stackoverflow.com/questions/12126496/how-to-obtain-certificate-signing-request" target="_blank">how to obtain CSR</a></p>
-</li>
-<li><p>Ok, you can download the the certificates if the third step successes.</p>
-</li>
-<li><p>Double click the certificate, and then you can find this certificate in Keychain Access.</p>
-</li>
-</ol>
-<h2><strong>Generate Distribution Provision Profile</strong></h2>
-<ol>
-<li><p>Changed to the “Provisioning Profiles” item and click “Distribution”.</p>
-</li>
-<li><p>Select and Click “Add” button on the top right of panel.</p>
-</li>
-<li><p>Following instructions one by one, “In-House” Provision Profiles and right “Production/Distribution Certificate” that you create before.</p>
-</li>
-<li><p>Success, and download it.</p>
-</li>
-<li><p>Double click to add it to x-code.</p>
-</li>
-</ol>
-<p>OK, you have finish the preparation. and next you can resign the iOS app.</p>
-<h2><strong>Resign iOS App</strong></h2>
-<p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in &quot;~/Downloads&quot; folder.</p>
+      <p>According the last blog(Here), destructor cannot be called by programmers , it is invoked automatically by GC in a uncertain time.So whether it means programmers need not care about releasing resource(or GC) in C#.</p>
+<p>In general, C# do not require as much memory management as is need.This is because the .NET Framework Garbage Collector implicitly manages the allocation and release of memory for your application.However most time, a explicit and accuracy way that programmers can release memory by themselves  is necessary.For example, when your application encapsulate unmanaged resources such as a window, file, font, database connection, network connection, and so on, you will find it very useful and helpful.So how many different and explicit ways can clean up the rare and expensive external resources that using by your application?</p>
+<p>Three ways provided on MSDN,for more details about them, see the following parts.</p>
+<h2>Implementing a Dispose Method</h2>
+<p>The IDispose Interface provide Dispose Method,it is used only for unmanaged resource. Do not implement and call it, unless application has encapsulate some unmanaged resources.For all managed resources, the Garbage Collector has a very efficient and implicit way to manage them,please never do the idle work.</p>
+<p>A class’s Dispose method should release all resources that it owns and it should also clean up all resources owned by its parent class by calling the parent’s Dispose method,and then, the parent will continue to invoke its base’s Dispose method.To help ensure all resources are always released completely, a Dispose method should be called several times without throwing any exceptions.Do not forget to call SuppressFinalize function in the Dispose,it will prevents the Finalize method from being invoked if current object is on the finalization queue.For more details about Finalize method will be described in the next title, and please remember that Finalize method called by GC automatically and executing a Finalize method is  costly to performance.If a Dispose method was called for release resources,it is not necessary for the Garbage Collector to called the disposed object’s Finalize again.</p>
+<p>The following example shows how to implement a Dispose method is a good pattern.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -94,16 +71,370 @@
 5
 6
 7
-</pre></td><td class="code"><pre><span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</span>
-<span class="comment">unzip</span> <span class="comment">YourApp</span>.<span class="comment">ipa</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">r</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/_CodeSignature</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/CodeResources</span>
-<span class="comment">cp</span> <span class="comment">~/Downloads/YourApp</span>.<span class="comment">mobileprovision</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/embedded</span>.<span class="comment">mobileprovision</span>
-<span class="comment">codesign</span> <span class="literal">-</span><span class="comment">f</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">"iPhone</span> <span class="comment">Distribution:</span> <span class="comment">xxxx"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">resource</span>-<span class="comment">rules</span> <span class="comment">"Payload/YourApp</span>.<span class="comment">app/ResourceRules</span>.<span class="comment">plist"</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app</span>
-<span class="comment">zip</span> <span class="literal">-</span><span class="comment">qr</span> <span class="comment">"YourApp</span>.<span class="comment">resigned</span>.<span class="comment">ipa"</span> <span class="comment">Payload</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+</pre></td><td class="code"><pre>     namespace CSnippets<span class="variable">.GC</span>
+     {
+         using System;
+         using System<span class="variable">.Collections</span><span class="variable">.Generic</span>;
+         using System<span class="variable">.Linq</span>;
+         using System<span class="variable">.Text</span>;
+         using System<span class="variable">.IO</span>;
+      
+         <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">DisposeExample</span></span>
+        {
+            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> TestDispose()
+            {
+                <span class="keyword">try</span>
+                {
+                    string path = Environment<span class="variable">.CurrentDirectory</span> + <span class="string">"\\App.config"</span>;
+     
+                    FileStream fs = File<span class="variable">.OpenRead</span>(path);
+     
+                    DisposableResource dr = new DisposableResource(fs);
+                    
+                    <span class="comment">//</span>
+                    dr<span class="variable">.DoSomethingWithResource</span>();
+     
+                    <span class="comment">//</span>
+                    dr<span class="variable">.Dispose</span>();
+                }
+                <span class="keyword">catch</span> (FileNotFoundException expt)
+                {
+                    Console<span class="variable">.WriteLine</span>(expt<span class="variable">.Message</span>);
+                }
+            }
+        }
+     
+        <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">DisposableResource</span> : <span class="id">IDisposable</span></span>
+        {
+            <span class="keyword">private</span> Stream resource = null;
+            <span class="keyword">private</span> <span class="keyword">bool</span> disposed = <span class="literal">false</span>;
+     
+            <span class="keyword">public</span> DisposableResource(Stream stream)
+            {
+                <span class="keyword">if</span> (null == stream)
+                {
+                    <span class="keyword">throw</span> new ArgumentNullException(<span class="string">"stream is null ..."</span>);
+                }
+     
+                <span class="keyword">if</span> (!stream<span class="variable">.CanRead</span>)
+                {
+                    <span class="keyword">throw</span> new ArgumentException(<span class="string">"stream must be readable ..."</span>);
+                }
+     
+                resource = stream;
+                disposed = <span class="literal">false</span>;
+            }
+     
+            <span class="keyword">public</span> <span class="keyword">void</span> DoSomethingWithResource()
+            {
+                <span class="keyword">if</span> (disposed)
+                {
+                    <span class="keyword">throw</span> new ObjectDisposedException(<span class="string">"resource was disposed ..."</span>);
+                }
+     
+                <span class="keyword">int</span> num = (<span class="keyword">int</span>)resource<span class="variable">.Length</span>;
+                Console<span class="variable">.WriteLine</span>(<span class="string">"Number of bytes: {0}"</span>, num<span class="variable">.ToString</span>());
+            }
+     
+            <span class="keyword">public</span> <span class="keyword">void</span> Dispose()
+            {
+                Dispose(<span class="literal">true</span>);
+     
+                <span class="comment">//  Using SuppressFinalize in case a subclass</span>
+                <span class="comment">//  of this type implements a finalizer.</span>
+                System<span class="variable">.GC</span><span class="variable">.SuppressFinalize</span>(<span class="keyword">this</span>);
+            }
+    
+            <span class="keyword">protected</span> virtual <span class="keyword">void</span> Dispose(<span class="keyword">bool</span> disposing)
+            {
+                <span class="comment">// If you need thread safety, use a lock around these </span>
+                <span class="comment">// operations, as well as in your methods that use the resource.</span>
+                <span class="keyword">if</span> (!disposed)
+                {
+                    <span class="keyword">if</span> (disposing)
+                   {
+                        <span class="comment">// Release unmanaged resource</span>
+     
+                        <span class="keyword">if</span> (null != resource)
+                        {
+                            resource<span class="variable">.Dispose</span>();
+                            Console<span class="variable">.WriteLine</span>(<span class="string">"Object disposed ..."</span>);
+                        }
+                    }
+     
+                    <span class="comment">// Release managed resource</span>
+     
+                   <span class="comment">// Indicate that the instance has been disposed.</span>
+                    resource = null;
+                    disposed = <span class="literal">true</span>;
+                }
+            }
+        }
+    }
 </pre></td></tr></table></figure>
 
-<p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
+
+<p>Actually,sometimes Close method is also used to release resources such as FileStream.Close.</p>
+<h2>Overriding the Finalize Method</h2>
+<p>Finalize is a protected method provided by the base class Object, so implement the Finalize method in C#, you must use destructor syntax.It is the same as Dispose method, a Finalize method should release all resources its owned and its parent owned by calling its base’s Finalize method.</p>
+<p>By default, the Object.Finalize method does nothing,unless override it by yourself.For example, if you want to clean up all resources before system executes the GC, you must override it in your class.and more important thing, you must ensure that a Finalize method should not throw any exceptions, because the application can not handle it and it can cause the application to terminate.</p>
+<p>Example is the best documents for programmer, is it right?Please see the below code snippets.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+</pre></td><td class="code"><pre>    <span class="regexp">//</span> Design pattern <span class="keyword">for</span> a base class.
+    public <span class="class"><span class="keyword">class</span> <span class="title">Base</span>:</span> IDisposable
+    {
+        private bool disposed = <span class="literal">false</span>;
+     
+        <span class="regexp">//</span>Implement IDisposable.
+        public <span class="reserved">void</span> Dispose()
+        {
+            Dispose(<span class="literal">true</span>);
+            GC.SuppressFinalize(<span class="keyword">this</span>);
+        }
+     
+        protected virtual <span class="reserved">void</span> Dispose(bool disposing)
+        {
+            <span class="keyword">if</span> (!disposed)
+ 	          {
+                <span class="keyword">if</span> (disposing)
+                {
+                    <span class="regexp">//</span> Free other state (managed objects).
+                }
+                <span class="regexp">//</span> Free your own state (unmanaged objects).
+                <span class="regexp">//</span> Set large fields to <span class="literal">null</span>.
+                disposed = <span class="literal">true</span>;
+            }
+        }
+     
+        <span class="regexp">//</span> Use C<span class="comment"># destructor syntax for finalization code.</span>
+        ~Base()
+        {
+            <span class="regexp">//</span> Simply call Dispose(<span class="literal">false</span>).
+            Dispose (<span class="literal">false</span>);
+        }
+    }
+     
+    <span class="regexp">//</span> Design pattern <span class="keyword">for</span> a derived class.
+    public <span class="class"><span class="keyword">class</span> <span class="title">Derived</span>:</span> Base
+    {
+        private bool disposed = <span class="literal">false</span>;
+     
+        protected override <span class="reserved">void</span> Dispose(bool disposing)
+        {
+            <span class="keyword">if</span> (!disposed)
+            {
+                <span class="keyword">if</span> (disposing)
+                {
+                    <span class="regexp">//</span> Release managed resources.
+                }
+                <span class="regexp">//</span> Release unmanaged resources.
+                <span class="regexp">//</span> Set large fields to <span class="literal">null</span>.
+               <span class="regexp">//</span> Call Dispose <span class="literal">on</span> your base class.
+                disposed = <span class="literal">true</span>;
+            }
+            base.Dispose(disposing);
+        }
+        <span class="regexp">//</span> The derived <span class="class"><span class="keyword">class</span> <span class="title">does</span> <span class="title">not</span> <span class="title">have</span> <span class="title">a</span> <span class="title">Finalize</span> <span class="title">method</span></span>
+        <span class="regexp">//</span> <span class="keyword">or</span> a Dispose method without parameters because it inherits
+        <span class="regexp">//</span> them from the base class.
+    }
+</pre></td></tr></table></figure>
+
+<p>Aha, it looks same as the topic how to implement a Dispose method except the yellow part.Why does it need to do like that?</p>
+<p>Actually, Even when you provide explicit calling Dispose method, you should invoke the Finalize method implicitly.The Finalize provide a backup to prevent resources from permanently leaking if the programmer fails to call Dispose method, even executing a Finalize method is an expensive operation.</p>
+<p>So what is your opinion?Do you think it is one way and one completely way that do those two ways together to release resources?</p>
+<h2>Using the using statement</h2>
+<p>Using statement provide a simple and convenient syntax to ensure that a correct way is be used for a IDispose object.It can make sure that Dispose method is called even if an exception occurs.For example, for StreamWriter, the using statement automatically closes the stream and invokes Dispose method on the StreamWriter object at the end of using statement.</p>
+<p>Below is a good practice that shows how to use using statement to clean up resources with Font(System.Drawing.Font) object.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre>  using (Font ft = new Font(<span class="string">"Arial"</span>, <span class="number">15.0</span>f))
+  {
+      byte charset = ft<span class="preprocessor">.GdiCharSet</span><span class="comment">;</span>
+   
+      Console<span class="preprocessor">.WriteLine</span>(<span class="string">"Charset of Arial is {0}"</span>, charset)<span class="comment">;</span>
+  }
+   
+  Font ft2 = new Font(<span class="string">"Arial"</span>, <span class="number">10.0</span>f)<span class="comment">;</span>
+  using (ft2) // not recommended
+  {
+      // use font2
+      byte charset2 = ft2<span class="preprocessor">.GdiCharSet</span><span class="comment">;</span>
+   
+      Console<span class="preprocessor">.WriteLine</span>(<span class="string">"Charset 2 of Arial is {0}"</span>, charset2)<span class="comment">;</span>
+  }
+  // font2 is still <span class="keyword">in</span> scope
+  // but the method <span class="keyword">call</span> throws an exception
+  float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<p>Of course, it is a much more complex topic of Garbage Collection in C# and there is several times contents about GC on MSDN than here.More details and comprehensive contents about Garbage Collection,see this webpage.have fun!</p>
 
     
     
@@ -111,7 +442,7 @@
       
       
   <div class="tags">
-<a href="/tags/文章, iOS/">文章, iOS</a></div>
+<a href="/tags/文章, Dispose/">文章, Dispose</a></div>
 
       
     </footer>

@@ -4,13 +4,68 @@
   <subtitle><![CDATA[I Share, therefore I am]]></subtitle>
   <link href="http://code4fun.cn/atom.xml" rel="self"/>
   <link href="http://code4fun.cn"/>
-  <updated>2013-09-23T17:41:21.454Z</updated>
+  <updated>2013-09-28T14:35:38.753Z</updated>
   <id>http://code4fun.cn/</id>
   <author>
     <name><![CDATA[Jerry li]]></name>
     <email><![CDATA[leezhm(at)126.com]]></email>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[How to fork a repo from github]]></title>
+    <link href="http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/"/>
+    <id>http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/</id>
+    <published>2013-09-28T14:18:22.000Z</published>
+    <updated>2013-09-28T14:35:24.000Z</updated>
+    <content type="html"><![CDATA[<h4>How to fork a repo from <a href="http://www.github.com" target="_blank">github</a>?</h4>
+<ul>
+<li><p>Login the github and click the “Fork” button.</p>
+<blockquote>
+<p>It&#39;s quite simple, just clicks a button.</p>
+</blockquote>
+</li>
+<li><p>Clone your fork</p>
+<p>  Make sure it&#39;s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>    <span class="comment"># Clone your fork</span>
+    <span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git
+</pre></td></tr></table></figure>
+
+<ul>
+<li><p>Configurate remotes</p>
+<p>  If you want to sync your fork with its origin master repo,you should add another remote called <strong>upstream</strong></p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre># Change the active directory
+    $ cd rgbdemo
+    
+    # Add the upstream url    
+    $ git remote add upstream https://github.com/nburrus/rgbdemo.git
+    
+    # Keeping <span class="operator"><span class="keyword">update</span> <span class="keyword">with</span> the upstream <span class="keyword">and</span> merges <span class="keyword">any</span> changes fetched <span class="keyword">into</span> your working files
+    $ git <span class="keyword">fetch</span> upstream
+    $ git merge upstream/master
+</pre></td></tr></table></figure>
+
+
+<ul>
+<li>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</li>
+</ul>
+]]></content>
+    <category scheme="http://code4fun.cn/tags/文章Git/" term="文章Git"/>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Explicitly Release Resources In C#]]></title>
     <link href="http://code4fun.cn/2013-09-24/explicitly-release-resources-in-c/"/>
@@ -459,7 +514,7 @@
     <link href="http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/"/>
     <id>http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/</id>
     <published>2013-09-19T09:10:28.000Z</published>
-    <updated>2013-09-23T17:19:25.000Z</updated>
+    <updated>2013-09-28T14:16:18.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><strong><em>闲扯由来</em></strong></li>
 </ul>
@@ -604,7 +659,7 @@ hexo <span class="keyword">server</span>
 </ol>
 </li>
 </ul>
-<pre><code>到此应该大功告成，等待大约<span class="number">10</span>分钟之后，你就应该可以使用 http://你的github账号名<span class="preprocessor">.github</span><span class="preprocessor">.io</span> 来访问你的网站。</code></pre>
+<p>   到此应该大功告成，等待大约10分钟之后，你就应该可以使用 <a href="http://你的github账号名.github.io" target="_blank">http://你的github账号名.github.io</a> 来访问你的网站。</p>
 <ul>
 <li><p><strong><em>补充</em></strong></p>
 <p>  如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
