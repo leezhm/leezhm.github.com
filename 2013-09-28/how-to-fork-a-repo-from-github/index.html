@@ -44,6 +44,18 @@
 </nav></header>
   <div id="content" class="inner"><article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <header>
     
   
@@ -56,30 +68,49 @@
   </header>
   <div class="entry-content">
     
-      <h3><em>How to fork a repo from <a href="http://www.github.com" target="_blank">github</a>?</em></h3>
+      <h3 id="How_to_fork_a_repo_from_github?"><em>How to fork a repo from <a href="http://www.github.com" target="_blank">github</a>?</em></h3>
 <ol>
 <li><p>Login the github and click the “Fork” button.</p>
-<p>It&#39;s quite simple, just clicks a button.</p>
+<p>It’s quite simple, just clicks a button.</p>
 </li>
 <li><p>Clone your fork</p>
-<p>Make sure it&#39;s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
-<pre><code><span class="comment"># Clone your fork</span>
-<span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git</code></pre>
+<p>Make sure it’s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
 </li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>   <span class="comment"># Clone your fork</span>
+   <span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git</span>
+</pre></td></tr></table></figure>
+
+
+<ol>
 <li><p>Configurate remotes</p>
 <p>If you want to sync your fork with its origin master repo,you should add another remote called <strong>upstream</strong></p>
-<pre><code># Change the active directory
-$ cd rgbdemo
-
-# Add the upstream url    
-$ git remote add upstream https://github.com/nburrus/rgbdemo.git
-
-# Keeping <span class="operator"><span class="keyword">update</span> <span class="keyword">with</span> the upstream <span class="keyword">and</span> merges <span class="keyword">any</span> changes fetched <span class="keyword">into</span> your working files
-$ git <span class="keyword">fetch</span> upstream
-$ git merge upstream/master</code></pre>
 </li>
-<li><p>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</p>
-</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>   # Change the active directory
+   $ cd rgbdemo
+   
+   # Add the upstream url    
+   $ git remote add upstream https://github.com/nburrus/rgbdemo.git
+   
+   # Keeping <span class="operator"><span class="keyword">update</span> <span class="keyword">with</span> the upstream <span class="keyword">and</span> merges <span class="keyword">any</span> changes fetched <span class="keyword">into</span> your working files
+   $ git <span class="keyword">fetch</span> upstream
+   $ git <span class="keyword">merge</span> upstream/master</span>
+</pre></td></tr></table></figure>
+
+<ol>
+<li>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</li>
 </ol>
 
     
@@ -98,9 +129,6 @@ $ git merge upstream/master</code></pre>
 </article></div>
   <footer id="footer" class="inner"><div class="social alignright">
   
-  
-  
-  
     <a class="weibo" href="http://weibo.com/leezhm" title="weibo">weibo</a>
   
   
@@ -110,7 +138,7 @@ $ git merge upstream/master</code></pre>
 </div>
 <p>
   
-  &copy; 2013 Jerry li
+  &copy; 2014 Jerry li
   
 </p>
 <div class="clearfix"></div></footer>

@@ -45,6 +45,18 @@
   <div id="content" class="inner">
   <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <header>
     
   
@@ -67,12 +79,16 @@
 <ul>
 <li><p><strong><em>切入正题</em></strong></p>
 <ul>
-<li>Github<br>  绝大部分程序猿肯定都知道<a href="https://github.com" target="_blank">Github</a>，也应该拥有自己的账号。如果没有，你现在就应该去创建一个，而且后面也需要用到这个。通过Github，我们可以很方便地分享我们的项目，进行代码管理,重构，与他人协作完成一个项目（当然如果你需要创建私人项目，你需要付费）。<br>  但是在这里，需要用Github提供的<a href="http://pages.github.com/" target="_blank">Github Pages</a>来做我新Blog的服务器。<pre><code>  1. Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。
-  2. 支持Markdown语法来发布文章
-  3. 可以很方便地用git来add, <span class="operator"><span class="keyword">commit</span>和push我的文章。
-  <span class="number">4.</span> 对blog拥有完全的控制权。</code></pre>
-</li>
-<li><p>Hexo<br>  其实<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>对于我也是蛮陌生的。那为啥选择Hexo，而不选择更成熟，更多人使用的<a href="http://octopress.org/" target="_blank">Octopress</a>呢？因为我学过一段时间的<a href="http://nodejs.org/" target="_blank">Node.js</a>,更喜欢Node.js的速度，绝对比基于Ruby的Octopress快。</p>
+<li><p>Github</p>
+<p>  绝大部分程序猿肯定都知道<a href="https://github.com" target="_blank">Github</a>，也应该拥有自己的账号。如果没有，你现在就应该去创建一个，而且后面也需要用到这个。通过Github，我们可以很方便地分享我们的项目，进行代码管理,重构，与他人协作完成一个项目（当然如果你需要创建私人项目，你需要付费）。</p>
+<p>  但是在这里，需要用Github提供的<a href="http://pages.github.com/" target="_blank">Github Pages</a>来做我新Blog的服务器。</p>
+<pre><code>  <span class="number">1.</span> Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。
+  <span class="number">2.</span> 支持Markdown语法来发布文章
+  <span class="number">3.</span> 可以很方便地用git来<span class="keyword">add</span>, commit和<span class="keyword">push</span>我的文章。
+  <span class="number">4.</span> 对blog拥有完全的控制权。
+</code></pre></li>
+<li><p>Hexo</p>
+<p>  其实<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>对于我也是蛮陌生的。那为啥选择Hexo，而不选择更成熟，更多人使用的<a href="http://octopress.org/" target="_blank">Octopress</a>呢？因为我学过一段时间的<a href="http://nodejs.org/" target="_blank">Node.js</a>,更喜欢Node.js的速度，绝对比基于Ruby的Octopress快。</p>
 <blockquote>
 <p>Hexo is a fast, simple and powerful blog framework. It parses your posts with           Markdown or other render engine and generates static files with the beautiful theme.           All of these just take seconds.</p>
 </blockquote>
@@ -83,11 +99,17 @@
 <ul>
 <li><p><strong><em>安装搭建</em></strong></p>
 <ol>
-<li><a href="http://code.google.com/p/git-osx-installer/" target="_blank">Git</a>，下载安装git for mac，完成后查看版本信息 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">git</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version
-</pre></td></tr></table></figure></li>
-<li><p><a href="http://nodejs.org/" target="_blank">Node.js</a>，可以去官网下载pkg文件安装，但是这里我选择通过nvm安装。</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
+<li><a href="http://code.google.com/p/git-osx-installer/" target="_blank">Git</a>，下载安装git for mac，完成后查看版本信息</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">git</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span>
+</pre></td></tr></table></figure>
+
+
+<pre><code><span class="bullet">2. </span>[<span class="link_label">Node.js</span>](<span class="link_url">http://nodejs.org/</span>)，可以去官网下载pkg文件安装，但是这里我选择通过nvm安装。
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -98,51 +120,63 @@ curl https://raw<span class="preprocessor">.github</span><span class="preprocess
 // 然后安装Node<span class="preprocessor">.js</span>
 nvm install <span class="number">0.10</span><span class="number">.18</span>
 </pre></td></tr></table></figure>
-</li>
-<li><p>通过npm安装Hexo(注意这里是npm，不是nvm)</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">npm</span> install -g hexo
-</pre></td></tr></table></figure><br> 或者升级<br> <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>npm <span class="operator"><span class="keyword">update</span> hexo -g
-</pre></td></tr></table></figure></li>
-<li><p>安装完成后，就可以初始化hexo，<br> <figure class="highlight"><table><tr><td class="gutter"><pre>1
+
+
+<pre><code><span class="number">3.</span> 通过<span class="built_in">npm</span>安装Hexo(注意这里是<span class="built_in">npm</span>，不是nvm)
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>npm <span class="keyword">install</span> -g hexo
+</pre></td></tr></table></figure>
+
+
+<pre><code>    或者升级
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>npm <span class="operator"><span class="keyword">update</span> hexo -g</span>
+</pre></td></tr></table></figure>
+
+
+<pre><code><span class="bullet">4. </span>安装完成后，就可以初始化hexo，
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre><span class="comment">// 在这里，你需要确保你的目录正确</span>
 hexo init ~<span class="regexp">/Developments/</span>Code4fun/Hexo
-</pre></td></tr></table></figure><br>在指定目录生成了如下结构的文件</p>
-<pre><code>    .
- ├── _config<span class="variable">.yml</span>   <span class="comment">// 站点配置文件，包含很多站点配置选项，比如域名</span>
- ├── package<span class="variable">.json</span>  <span class="comment">// 应用程序数据，比如程序名字，版本号等</span>
- ├── scaffolds     <span class="comment">// 存储要发布的post的基本文件</span>
- ├── scripts       <span class="comment">// js文件，保存一个hexo的js扩展文件</span>
- ├── source        <span class="comment">// 保存文章内容</span>
- |   ├── _drafts   ---<span class="comment">// 草稿文件</span>
- |   └── _posts    ---<span class="comment">// 发布的文章</span>
- └── themes        <span class="comment">// 主题文件夹</span></code></pre>
+</pre></td></tr></table></figure>
+
+
+<pre><code>   在指定目录生成了如下结构的文件
+
+           .
+        ├── _config.yml   <span class="comment">// 站点配置文件，包含很多站点配置选项，比如域名</span>
+        ├── <span class="keyword">package</span>.json  <span class="comment">// 应用程序数据，比如程序名字，版本号等</span>
+        ├── scaffolds     <span class="comment">// 存储要发布的post的基本文件</span>
+        ├── scripts       <span class="comment">// js文件，保存一个hexo的js扩展文件</span>
+        ├── source        <span class="comment">// 保存文章内容</span>
+        |   ├── _drafts   ---<span class="comment">// 草稿文件</span>
+        |   └── _posts    ---<span class="comment">// 发布的文章</span>
+        └── themes        <span class="comment">// 主题文件夹</span>
+</code></pre><ul>
+<li><p><strong><em>配置站点</em></strong></p>
+<ol>
+<li><p>配置 _config.yml</p>
+<pre><code> # Site
+ title: Code <span class="keyword">For</span> Fun
+ subtitle: I Share, therefore I am
+ description: A iOS developer’s personal blog.
+ author: Jerry li
+ email: leezhm(at)<span class="number">126</span>.com
+ language: zh-CN
+
+ # URL
+ ## <span class="keyword">If</span> your site <span class="keyword">is</span> put <span class="keyword">in</span> a subdirectory, <span class="keyword">set</span> url <span class="keyword">as</span> <span class="string">'http://yoursite.com/child'</span> <span class="keyword">and</span> root <span class="keyword">as</span> <span class="string">'/child/'</span>
+ url: http:<span class="comment">//code4fun.cn</span>
+ root: /
+ permalink: :year-:month-:day/:title/
+</code></pre></li>
+<li><p>本地测试</p>
 </li>
 </ol>
 </li>
 </ul>
-<ul>
-<li><p><strong><em>配置站点</em></strong></p>
-<ol>
-<li><p>配置 _config.yml</p>
-<pre><code> # <span class="class">Site</span>
- <span class="method">title:</span> <span class="class">Code</span> <span class="class">For</span> <span class="class">Fun</span>
- <span class="method">subtitle:</span> <span class="class">I</span> <span class="class">Share</span>, therefore <span class="class">I</span> am
- <span class="method">description:</span> <span class="class">A</span> iOS developer’s personal blog.
- <span class="method">author:</span> <span class="class">Jerry</span> li
- <span class="method">email:</span> leezhm(at)<span class="number">126.</span>com
- <span class="method">language:</span> zh-<span class="class">CN</span>
-
- # <span class="class">URL</span>
- ## <span class="class">If</span> your site is put in a subdirectory, set url as <span class="string">'http://yoursite.com/child'</span> and root as <span class="string">'/child/'</span>
- <span class="method">url:</span> <span class="method">http:</span>//code4fun.cn
- <span class="method">root:</span> /
- <span class="method">permalink:</span> :year-:month-:day/:title/</code></pre>
-</li>
-<li><p>本地测试</p>
-<p> <figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -154,21 +188,38 @@ hexo generate
 <span class="comment">// 运行默认的server</span>
 hexo <span class="keyword">server</span>
 <span class="comment">//[info] Hexo is running at localhost:4000/. Press Ctrl+C to stop.</span>
-</pre></td></tr></table></figure><br> 然后在你的浏览器中输入网址<a href="http://localhost:4000" target="_blank">localhost:4000</a>，测试。看是否可以看到默认页面。<br> 测试成功后，我们就需要把它送到Github Pages服务器上。</p>
+</pre></td></tr></table></figure>
+
+
+<pre><code>    然后在你的浏览器中输入网址[localhost:<span class="number">4000</span>](http:<span class="comment">//localhost:4000)，测试。看是否可以看到默认页面。</span>
+
+    测试成功后，我们就需要把它送到Github Pages服务器上。
+</code></pre><ul>
+<li><p><strong><em>Github Pages</em></strong></p>
+<ol>
+<li><p>如果没有Github账号，请创建一个账号，然后创建一个Repository。</p>
+<ul>
+<li><p>创建一个blog网站</p>
+<p>  如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是 </p>
+<p>  <strong><em>你的Github账户名.github.com(比如我的就是 leezhm.github.com)</em></strong></p>
+<p>  否则Github无法提供解析。</p>
+</li>
+</ul>
 </li>
 </ol>
 </li>
 </ul>
-<ul>
-<li><p><strong><em>Github Pages</em></strong></p>
-<ol>
-<li>如果没有Github账号，请创建一个账号，然后创建一个Repository。<ul>
-<li>创建一个blog网站<br>  如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是<br>  <strong><em>你的Github账户名.github.com(比如我的就是 leezhm.github.com)</em></strong><br>  否则Github无法提供解析。</li>
-<li>为一个Project创建Page<br>  在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，否则不能正确解析页面。至于怎么在Github上创建branch，并设置default branch，请查询Github Help。<br>补充创建和删除branch<a href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository" target="_blank">Github - Create/Delete branch</a>，以及<a href="https://help.github.com/articles/setting-the-default-branch" target="_blank">Github - Set default branch</a>网址。<br><strong><em>在这里我选择的是创建一个blog网站</em></strong></li>
-</ul>
-</li>
-<li><p>配置_config.yml中的deploy</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
+<pre><code><span class="code">    - 为一个Project创建Page</span>
+
+<span class="code">        在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，否则不能正确解析页面。至于怎么在Github上创建branch，并设置default branch，请查询Github Help。</span>
+
+ 补充创建和删除branch[<span class="link_label">Github - Create/Delete branch</span>](<span class="link_url">https://help.github.com/articles/creating-and-deleting-branches-within-your-repository</span>)，以及[<span class="link_label">Github - Set default branch</span>](<span class="link_url">https://help.github.com/articles/setting-the-default-branch</span>)网址。
+
+  <span class="strong">___在这里我选择的是创建一个blog网站__</span>_
+
+
+<span class="bullet">2. </span>配置_config.yml中的deploy
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -180,19 +231,17 @@ hexo <span class="keyword">server</span>
 <span class="label">repository:</span> https://github<span class="preprocessor">.com</span>/leezhm/leezhm<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span>
 </pre></td></tr></table></figure>
 
-<p>   在这里，需要注意不要写错地址，最好用https。另外branch应该是根据创建的类型不同，做更更改的。</p>
-</li>
-<li><p>生成并发布你网站</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
+<pre><code><span class="code">      在这里，需要注意不要写错地址，最好用https。另外branch应该是根据创建的类型不同，做更更改的。</span>
+
+<span class="bullet">3. </span>生成并发布你网站
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="comment">//</span> <span class="comment">从Markdown生成静态html文件，然后上传至你的repo中</span>
-<span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate
+</pre></td><td class="code"><pre><span class="comment">// 从Markdown生成静态html文件，然后上传至你的repo中</span>
+hexo deploy --generate
 </pre></td></tr></table></figure>
 
-<p>到此应该大功告成，等待大约10分钟之后，你就应该可以使用 <a href="http://你的github账号名.github.io" target="_blank">http://你的github账号名.github.io</a> 来访问你的网站。</p>
-</li>
-</ol>
-</li>
+<pre><code>到此应该大功告成，等待大约<span class="number">10</span>分钟之后，你就应该可以使用 http://你的github账号名<span class="preprocessor">.github</span><span class="preprocessor">.io</span> 来访问你的网站。
+</code></pre><ul>
 <li><p><strong><em>补充</em></strong></p>
 <p>  如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
 </li>
@@ -223,9 +272,6 @@ hexo <span class="keyword">server</span>
 </nav></div>
   <footer id="footer" class="inner"><div class="social alignright">
   
-  
-  
-  
     <a class="weibo" href="http://weibo.com/leezhm" title="weibo">weibo</a>
   
   
@@ -235,7 +281,7 @@ hexo <span class="keyword">server</span>
 </div>
 <p>
   
-  &copy; 2013 Jerry li
+  &copy; 2014 Jerry li
   
 </p>
 <div class="clearfix"></div></footer>

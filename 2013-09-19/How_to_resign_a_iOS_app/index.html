@@ -44,6 +44,18 @@
 </nav></header>
   <div id="content" class="inner"><article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <header>
     
   
@@ -57,7 +69,7 @@
   <div class="entry-content">
     
       <p>As may we know, we can distribute apps with enterprise account to any devices without add the device id into device list. This is very useful when the developers are not in the same offices or a multi-people project. So how to do that?</p>
-<h2><strong>Generate Production/Distribution Certificates</strong></h2>
+<h2 id="Generate_Production/Distribution_Certificates"><strong>Generate Production/Distribution Certificates</strong></h2>
 <ol>
 <li><p>login the iOS dev center with your enterprise account, and click “Certificates, Identifiers &amp; Profiles”.</p>
 </li>
@@ -70,7 +82,7 @@
 <li><p>Double click the certificate, and then you can find this certificate in Keychain Access.</p>
 </li>
 </ol>
-<h2><strong>Generate Distribution Provision Profile</strong></h2>
+<h2 id="Generate_Distribution_Provision_Profile"><strong>Generate Distribution Provision Profile</strong></h2>
 <ol>
 <li><p>Changed to the “Provisioning Profiles” item and click “Distribution”.</p>
 </li>
@@ -84,8 +96,8 @@
 </li>
 </ol>
 <p>OK, you have finish the preparation. and next you can resign the iOS app.</p>
-<h2><strong>Resign iOS App</strong></h2>
-<p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in &quot;~/Downloads&quot; folder.</p>
+<h2 id="Resign_iOS_App"><strong>Resign iOS App</strong></h2>
+<p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in “~/Downloads” folder.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -93,13 +105,13 @@
 5
 6
 7
-</pre></td><td class="code"><pre><span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</span>
-<span class="comment">unzip</span> <span class="comment">YourApp</span>.<span class="comment">ipa</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">r</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/_CodeSignature</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/CodeResources</span>
-<span class="comment">cp</span> <span class="comment">~/Downloads/YourApp</span>.<span class="comment">mobileprovision</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/embedded</span>.<span class="comment">mobileprovision</span>
-<span class="comment">codesign</span> <span class="literal">-</span><span class="comment">f</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">"iPhone</span> <span class="comment">Distribution:</span> <span class="comment">xxxx"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">resource</span>-<span class="comment">rules</span> <span class="comment">"Payload/YourApp</span>.<span class="comment">app/ResourceRules</span>.<span class="comment">plist"</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app</span>
-<span class="comment">zip</span> <span class="literal">-</span><span class="comment">qr</span> <span class="comment">"YourApp</span>.<span class="comment">resigned</span>.<span class="comment">ipa"</span> <span class="comment">Payload</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload
+</pre></td><td class="code"><pre>rm -rf Payload
+unzip YourApp<span class="preprocessor">.ipa</span>
+rm -r Payload/YourApp<span class="preprocessor">.app</span>/_CodeSignature Payload/YourApp<span class="preprocessor">.app</span>/CodeResources
+<span class="keyword">cp</span> ~/Downloads/YourApp<span class="preprocessor">.mobileprovision</span> Payload/YourApp<span class="preprocessor">.app</span>/embedded<span class="preprocessor">.mobileprovision</span>
+codesign -f -s <span class="string">"iPhone Distribution: xxxx"</span> --resource-rules <span class="string">"Payload/YourApp.app/ResourceRules.plist"</span> Payload/YourApp<span class="preprocessor">.app</span>
+zip -qr <span class="string">"YourApp.resigned.ipa"</span> Payload
+rm -rf Payload
 </pre></td></tr></table></figure>
 
 <p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
@@ -120,9 +132,6 @@
 </article></div>
   <footer id="footer" class="inner"><div class="social alignright">
   
-  
-  
-  
     <a class="weibo" href="http://weibo.com/leezhm" title="weibo">weibo</a>
   
   
@@ -132,7 +141,7 @@
 </div>
 <p>
   
-  &copy; 2013 Jerry li
+  &copy; 2014 Jerry li
   
 </p>
 <div class="clearfix"></div></footer>

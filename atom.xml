@@ -4,7 +4,7 @@
   <subtitle><![CDATA[I Share, therefore I am]]></subtitle>
   <link href="http://code4fun.cn/atom.xml" rel="self"/>
   <link href="http://code4fun.cn"/>
-  <updated>2013-09-28T15:25:23.208Z</updated>
+  <updated>2014-04-18T15:54:12.835Z</updated>
   <id>http://code4fun.cn/</id>
   <author>
     <name><![CDATA[Jerry li]]></name>
@@ -17,30 +17,49 @@
     <id>http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/</id>
     <published>2013-09-28T14:18:22.000Z</published>
     <updated>2013-09-28T15:23:52.000Z</updated>
-    <content type="html"><![CDATA[<h3><em>How to fork a repo from <a href="http://www.github.com" target="_blank">github</a>?</em></h3>
+    <content type="html"><![CDATA[<h3 id="How_to_fork_a_repo_from_github?"><em>How to fork a repo from <a href="http://www.github.com" target="_blank">github</a>?</em></h3>
 <ol>
 <li><p>Login the github and click the “Fork” button.</p>
-<p>It&#39;s quite simple, just clicks a button.</p>
+<p>It’s quite simple, just clicks a button.</p>
 </li>
 <li><p>Clone your fork</p>
-<p>Make sure it&#39;s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
-<pre><code><span class="comment"># Clone your fork</span>
-<span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git</code></pre>
+<p>Make sure it’s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
 </li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>   <span class="comment"># Clone your fork</span>
+   <span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git</span>
+</pre></td></tr></table></figure>
+
+
+<ol>
 <li><p>Configurate remotes</p>
 <p>If you want to sync your fork with its origin master repo,you should add another remote called <strong>upstream</strong></p>
-<pre><code># Change the active directory
-$ cd rgbdemo
-
-# Add the upstream url    
-$ git remote add upstream https://github.com/nburrus/rgbdemo.git
-
-# Keeping <span class="operator"><span class="keyword">update</span> <span class="keyword">with</span> the upstream <span class="keyword">and</span> merges <span class="keyword">any</span> changes fetched <span class="keyword">into</span> your working files
-$ git <span class="keyword">fetch</span> upstream
-$ git merge upstream/master</code></pre>
 </li>
-<li><p>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</p>
-</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>   # Change the active directory
+   $ cd rgbdemo
+   
+   # Add the upstream url    
+   $ git remote add upstream https://github.com/nburrus/rgbdemo.git
+   
+   # Keeping <span class="operator"><span class="keyword">update</span> <span class="keyword">with</span> the upstream <span class="keyword">and</span> merges <span class="keyword">any</span> changes fetched <span class="keyword">into</span> your working files
+   $ git <span class="keyword">fetch</span> upstream
+   $ git <span class="keyword">merge</span> upstream/master</span>
+</pre></td></tr></table></figure>
+
+<ol>
+<li>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</li>
 </ol>
 ]]></content>
     <category scheme="http://code4fun.cn/tags/文章，Git/" term="文章，Git"/>
@@ -54,7 +73,7 @@ $ git merge upstream/master</code></pre>
     <content type="html"><![CDATA[<p>According the last blog(Here), destructor cannot be called by programmers , it is invoked automatically by GC in a uncertain time.So whether it means programmers need not care about releasing resource(or GC) in C#.</p>
 <p>In general, C# do not require as much memory management as is need.This is because the .NET Framework Garbage Collector implicitly manages the allocation and release of memory for your application.However most time, a explicit and accuracy way that programmers can release memory by themselves  is necessary.For example, when your application encapsulate unmanaged resources such as a window, file, font, database connection, network connection, and so on, you will find it very useful and helpful.So how many different and explicit ways can clean up the rare and expensive external resources that using by your application?</p>
 <p>Three ways provided on MSDN,for more details about them, see the following parts.</p>
-<h2>Implementing a Dispose Method</h2>
+<h2 id="Implementing_a_Dispose_Method">Implementing a Dispose Method</h2>
 <p>The IDispose Interface provide Dispose Method,it is used only for unmanaged resource. Do not implement and call it, unless application has encapsulate some unmanaged resources.For all managed resources, the Garbage Collector has a very efficient and implicit way to manage them,please never do the idle work.</p>
 <p>A class’s Dispose method should release all resources that it owns and it should also clean up all resources owned by its parent class by calling the parent’s Dispose method,and then, the parent will continue to invoke its base’s Dispose method.To help ensure all resources are always released completely, a Dispose method should be called several times without throwing any exceptions.Do not forget to call SuppressFinalize function in the Dispose,it will prevents the Finalize method from being invoked if current object is on the finalization queue.For more details about Finalize method will be described in the next title, and please remember that Finalize method called by GC automatically and executing a Finalize method is  costly to performance.If a Dispose method was called for release resources,it is not necessary for the Garbage Collector to called the disposed object’s Finalize again.</p>
 <p>The following example shows how to implement a Dispose method is a good pattern.</p>
@@ -158,81 +177,81 @@ $ git merge upstream/master</code></pre>
 98
 99
 100
-</pre></td><td class="code"><pre>namespace CSnippets<span class="variable">.GC</span>
+</pre></td><td class="code"><pre>namespace CSnippets.GC
 {
-    using System;
-    using System<span class="variable">.Collections</span><span class="variable">.Generic</span>;
-    using System<span class="variable">.Linq</span>;
-    using System<span class="variable">.Text</span>;
-    using System<span class="variable">.IO</span>;
+    <span class="keyword">using</span> System;
+    <span class="keyword">using</span> System.Collections.Generic;
+    <span class="keyword">using</span> System.Linq;
+    <span class="keyword">using</span> System.Text;
+    <span class="keyword">using</span> System.IO;
 
-    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">DisposeExample</span></span>
+    <span class="keyword">public</span> <span class="keyword">class</span> DisposeExample
     {
-        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> TestDispose()
+        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">TestDispose</span>()
         {
             <span class="keyword">try</span>
             {
-                string path = Environment<span class="variable">.CurrentDirectory</span> + <span class="string">"\\App.config"</span>;
+                <span class="keyword">string</span> path = Environment.CurrentDirectory + <span class="string">"\\App.config"</span>;
 
-                FileStream fs = File<span class="variable">.OpenRead</span>(path);
+                FileStream fs = File.OpenRead(path);
 
-                DisposableResource dr = new DisposableResource(fs);
+                DisposableResource dr = <span class="keyword">new</span> DisposableResource(fs);
                 
                 <span class="comment">//</span>
-                dr<span class="variable">.DoSomethingWithResource</span>();
+                dr.DoSomethingWithResource();
 
                 <span class="comment">//</span>
-                dr<span class="variable">.Dispose</span>();
+                dr.Dispose();
             }
             <span class="keyword">catch</span> (FileNotFoundException expt)
             {
-                Console<span class="variable">.WriteLine</span>(expt<span class="variable">.Message</span>);
+                Console.WriteLine(expt.Message);
             }
         }
     }
 
-    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="id">DisposableResource</span> : <span class="id">IDisposable</span></span>
+    <span class="keyword">public</span> <span class="keyword">class</span> DisposableResource : IDisposable
     {
-        <span class="keyword">private</span> Stream resource = null;
-        <span class="keyword">private</span> <span class="keyword">bool</span> disposed = <span class="literal">false</span>;
+        <span class="keyword">private</span> Stream resource = <span class="keyword">null</span>;
+        <span class="keyword">private</span> <span class="keyword">bool</span> disposed = <span class="keyword">false</span>;
 
-        <span class="keyword">public</span> DisposableResource(Stream stream)
+        <span class="keyword">public</span> <span class="title">DisposableResource</span>(Stream stream)
         {
-            <span class="keyword">if</span> (null == stream)
+            <span class="keyword">if</span> (<span class="keyword">null</span> == stream)
             {
-                <span class="keyword">throw</span> new ArgumentNullException(<span class="string">"stream is null ..."</span>);
+                <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"stream is null ..."</span>);
             }
 
-            <span class="keyword">if</span> (!stream<span class="variable">.CanRead</span>)
+            <span class="keyword">if</span> (!stream.CanRead)
             {
-                <span class="keyword">throw</span> new ArgumentException(<span class="string">"stream must be readable ..."</span>);
+                <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">"stream must be readable ..."</span>);
             }
 
             resource = stream;
-            disposed = <span class="literal">false</span>;
+            disposed = <span class="keyword">false</span>;
         }
 
-        <span class="keyword">public</span> <span class="keyword">void</span> DoSomethingWithResource()
+        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DoSomethingWithResource</span>()
         {
             <span class="keyword">if</span> (disposed)
             {
-                <span class="keyword">throw</span> new ObjectDisposedException(<span class="string">"resource was disposed ..."</span>);
+                <span class="keyword">throw</span> <span class="keyword">new</span> ObjectDisposedException(<span class="string">"resource was disposed ..."</span>);
             }
 
-            <span class="keyword">int</span> num = (<span class="keyword">int</span>)resource<span class="variable">.Length</span>;
-            Console<span class="variable">.WriteLine</span>(<span class="string">"Number of bytes: {0}"</span>, num<span class="variable">.ToString</span>());
+            <span class="keyword">int</span> num = (<span class="keyword">int</span>)resource.Length;
+            Console.WriteLine(<span class="string">"Number of bytes: {0}"</span>, num.ToString());
         }
 
-        <span class="keyword">public</span> <span class="keyword">void</span> Dispose()
+        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>()
         {
-            Dispose(<span class="literal">true</span>);
+            Dispose(<span class="keyword">true</span>);
 
             <span class="comment">//  Using SuppressFinalize in case a subclass</span>
             <span class="comment">//  of this type implements a finalizer.</span>
-            System<span class="variable">.GC</span><span class="variable">.SuppressFinalize</span>(<span class="keyword">this</span>);
+            System.GC.SuppressFinalize(<span class="keyword">this</span>);
         }
 
-        <span class="keyword">protected</span> virtual <span class="keyword">void</span> Dispose(<span class="keyword">bool</span> disposing)
+        <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="keyword">bool</span> disposing)
         {
             <span class="comment">// If you need thread safety, use a lock around these </span>
             <span class="comment">// operations, as well as in your methods that use the resource.</span>
@@ -242,18 +261,18 @@ $ git merge upstream/master</code></pre>
                {
                     <span class="comment">// Release unmanaged resource</span>
 
-                    <span class="keyword">if</span> (null != resource)
+                    <span class="keyword">if</span> (<span class="keyword">null</span> != resource)
                     {
-                        resource<span class="variable">.Dispose</span>();
-                        Console<span class="variable">.WriteLine</span>(<span class="string">"Object disposed ..."</span>);
+                        resource.Dispose();
+                        Console.WriteLine(<span class="string">"Object disposed ..."</span>);
                     }
                 }
 
                 <span class="comment">// Release managed resource</span>
 
                <span class="comment">// Indicate that the instance has been disposed.</span>
-                resource = null;
-                disposed = <span class="literal">true</span>;
+                resource = <span class="keyword">null</span>;
+                disposed = <span class="keyword">true</span>;
             }
         }
     }
@@ -262,7 +281,7 @@ $ git merge upstream/master</code></pre>
 
 
 <p>Actually,sometimes Close method is also used to release resources such as FileStream.Close.</p>
-<h2>Overriding the Finalize Method</h2>
+<h2 id="Overriding_the_Finalize_Method">Overriding the Finalize Method</h2>
 <p>Finalize is a protected method provided by the base class Object, so implement the Finalize method in C#, you must use destructor syntax.It is the same as Dispose method, a Finalize method should release all resources its owned and its parent owned by calling its base’s Finalize method.</p>
 <p>By default, the Object.Finalize method does nothing,unless override it by yourself.For example, if you want to clean up all resources before system executes the GC, you must override it in your class.and more important thing, you must ensure that a Finalize method should not throw any exceptions, because the application can not handle it and it can cause the application to terminate.</p>
 <p>Example is the best documents for programmer, is it right?Please see the below code snippets.</p>
@@ -324,70 +343,70 @@ $ git merge upstream/master</code></pre>
 56
 57
 58
-</pre></td><td class="code"><pre><span class="regexp">//</span> Design pattern <span class="keyword">for</span> a base class.
-public <span class="class"><span class="keyword">class</span> <span class="title">Base</span>:</span> IDisposable
+</pre></td><td class="code"><pre><span class="comment">// Design pattern for a base class.</span>
+<span class="keyword">public</span> <span class="keyword">class</span> Base: IDisposable
 {
-    private bool disposed = <span class="literal">false</span>;
+    <span class="keyword">private</span> <span class="keyword">bool</span> disposed = <span class="keyword">false</span>;
  
-    <span class="regexp">//</span>Implement IDisposable.
-    public <span class="reserved">void</span> Dispose()
+    <span class="comment">//Implement IDisposable.</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>()
     {
-        Dispose(<span class="literal">true</span>);
+        Dispose(<span class="keyword">true</span>);
         GC.SuppressFinalize(<span class="keyword">this</span>);
     }
  
-    protected virtual <span class="reserved">void</span> Dispose(bool disposing)
+    <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="keyword">bool</span> disposing)
     {
         <span class="keyword">if</span> (!disposed)
 	          {
             <span class="keyword">if</span> (disposing)
             {
-                <span class="regexp">//</span> Free other state (managed objects).
+                <span class="comment">// Free other state (managed objects).</span>
             }
-            <span class="regexp">//</span> Free your own state (unmanaged objects).
-            <span class="regexp">//</span> Set large fields to <span class="literal">null</span>.
-            disposed = <span class="literal">true</span>;
+            <span class="comment">// Free your own state (unmanaged objects).</span>
+            <span class="comment">// Set large fields to null.</span>
+            disposed = <span class="keyword">true</span>;
         }
     }
  
-    <span class="regexp">//</span> Use C<span class="comment"># destructor syntax for finalization code.</span>
+    <span class="comment">// Use C# destructor syntax for finalization code.</span>
     ~Base()
     {
-        <span class="regexp">//</span> Simply call Dispose(<span class="literal">false</span>).
-        Dispose (<span class="literal">false</span>);
+        <span class="comment">// Simply call Dispose(false).</span>
+        Dispose (<span class="keyword">false</span>);
     }
 }
  
-<span class="regexp">//</span> Design pattern <span class="keyword">for</span> a derived class.
-public <span class="class"><span class="keyword">class</span> <span class="title">Derived</span>:</span> Base
+<span class="comment">// Design pattern for a derived class.</span>
+<span class="keyword">public</span> <span class="keyword">class</span> Derived: Base
 {
-    private bool disposed = <span class="literal">false</span>;
+    <span class="keyword">private</span> <span class="keyword">bool</span> disposed = <span class="keyword">false</span>;
  
-    protected override <span class="reserved">void</span> Dispose(bool disposing)
+    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="keyword">bool</span> disposing)
     {
         <span class="keyword">if</span> (!disposed)
         {
             <span class="keyword">if</span> (disposing)
             {
-                <span class="regexp">//</span> Release managed resources.
+                <span class="comment">// Release managed resources.</span>
             }
-            <span class="regexp">//</span> Release unmanaged resources.
-            <span class="regexp">//</span> Set large fields to <span class="literal">null</span>.
-           <span class="regexp">//</span> Call Dispose <span class="literal">on</span> your base class.
-            disposed = <span class="literal">true</span>;
+            <span class="comment">// Release unmanaged resources.</span>
+            <span class="comment">// Set large fields to null.</span>
+           <span class="comment">// Call Dispose on your base class.</span>
+            disposed = <span class="keyword">true</span>;
         }
-        base.Dispose(disposing);
+        <span class="keyword">base</span>.Dispose(disposing);
     }
-    <span class="regexp">//</span> The derived <span class="class"><span class="keyword">class</span> <span class="title">does</span> <span class="title">not</span> <span class="title">have</span> <span class="title">a</span> <span class="title">Finalize</span> <span class="title">method</span></span>
-    <span class="regexp">//</span> <span class="keyword">or</span> a Dispose method without parameters because it inherits
-    <span class="regexp">//</span> them from the base class.
+    <span class="comment">// The derived class does not have a Finalize method</span>
+    <span class="comment">// or a Dispose method without parameters because it inherits</span>
+    <span class="comment">// them from the base class.</span>
 }
 </pre></td></tr></table></figure>
 
 <p>Aha, it looks same as the topic how to implement a Dispose method except the yellow part.Why does it need to do like that?</p>
 <p>Actually, Even when you provide explicit calling Dispose method, you should invoke the Finalize method implicitly.The Finalize provide a backup to prevent resources from permanently leaking if the programmer fails to call Dispose method, even executing a Finalize method is an expensive operation.</p>
 <p>So what is your opinion?Do you think it is one way and one completely way that do those two ways together to release resources?</p>
-<h2>Using the using statement</h2>
+<h2 id="Using_the_using_statement">Using the using statement</h2>
 <p>Using statement provide a simple and convenient syntax to ensure that a correct way is be used for a IDispose object.It can make sure that Dispose method is called even if an exception occurs.For example, for StreamWriter, the using statement automatically closes the stream and invokes Dispose method on the StreamWriter object at the end of using statement.</p>
 <p>Below is a good practice that shows how to use using statement to clean up resources with Font(System.Drawing.Font) object.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -409,25 +428,25 @@ public <span class="class"><span class="keyword">class</span> <span class="title
 17
 18
 19
-</pre></td><td class="code"><pre>using (Font ft = new Font(<span class="string">"Arial"</span>, <span class="number">15.0</span>f))
+</pre></td><td class="code"><pre><span class="keyword">using</span> (Font ft = <span class="keyword">new</span> Font(<span class="string">"Arial"</span>, <span class="number">15.0</span>f))
 {
-    byte charset = ft<span class="preprocessor">.GdiCharSet</span><span class="comment">;</span>
+    <span class="keyword">byte</span> charset = ft.GdiCharSet;
 
-    Console<span class="preprocessor">.WriteLine</span>(<span class="string">"Charset of Arial is {0}"</span>, charset)<span class="comment">;</span>
+    Console.WriteLine(<span class="string">"Charset of Arial is {0}"</span>, charset);
 }
 
-Font ft2 = new Font(<span class="string">"Arial"</span>, <span class="number">10.0</span>f)<span class="comment">;</span>
-using (ft2) // not recommended
+Font ft2 = <span class="keyword">new</span> Font(<span class="string">"Arial"</span>, <span class="number">10.0</span>f);
+<span class="keyword">using</span> (ft2) <span class="comment">// not recommended</span>
 {
-    // use font2
-    byte charset2 = ft2<span class="preprocessor">.GdiCharSet</span><span class="comment">;</span>
+    <span class="comment">// use font2</span>
+    <span class="keyword">byte</span> charset2 = ft2.GdiCharSet;
 
-    Console<span class="preprocessor">.WriteLine</span>(<span class="string">"Charset 2 of Arial is {0}"</span>, charset2)<span class="comment">;</span>
+    Console.WriteLine(<span class="string">"Charset 2 of Arial is {0}"</span>, charset2);
 }
 
-// font2 is still <span class="keyword">in</span> scope
-// but the method <span class="keyword">call</span> throws an exception
-float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment">;</span>
+<span class="comment">// font2 is still in scope</span>
+<span class="comment">// but the method call throws an exception</span>
+<span class="keyword">float</span> f = ft2.GetHeight();
 </pre></td></tr></table></figure>
 
 <p>Of course, it is a much more complex topic of Garbage Collection in C# and there is several times contents about GC on MSDN than here.More details and comprehensive contents about Garbage Collection,see this webpage.have fun!</p>
@@ -441,7 +460,7 @@ float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment"
     <published>2013-09-19T15:35:28.000Z</published>
     <updated>2013-09-23T16:43:19.000Z</updated>
     <content type="html"><![CDATA[<p>As may we know, we can distribute apps with enterprise account to any devices without add the device id into device list. This is very useful when the developers are not in the same offices or a multi-people project. So how to do that?</p>
-<h2><strong>Generate Production/Distribution Certificates</strong></h2>
+<h2 id="Generate_Production/Distribution_Certificates"><strong>Generate Production/Distribution Certificates</strong></h2>
 <ol>
 <li><p>login the iOS dev center with your enterprise account, and click “Certificates, Identifiers &amp; Profiles”.</p>
 </li>
@@ -454,7 +473,7 @@ float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment"
 <li><p>Double click the certificate, and then you can find this certificate in Keychain Access.</p>
 </li>
 </ol>
-<h2><strong>Generate Distribution Provision Profile</strong></h2>
+<h2 id="Generate_Distribution_Provision_Profile"><strong>Generate Distribution Provision Profile</strong></h2>
 <ol>
 <li><p>Changed to the “Provisioning Profiles” item and click “Distribution”.</p>
 </li>
@@ -468,8 +487,8 @@ float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment"
 </li>
 </ol>
 <p>OK, you have finish the preparation. and next you can resign the iOS app.</p>
-<h2><strong>Resign iOS App</strong></h2>
-<p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in &quot;~/Downloads&quot; folder.</p>
+<h2 id="Resign_iOS_App"><strong>Resign iOS App</strong></h2>
+<p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in “~/Downloads” folder.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -477,13 +496,13 @@ float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment"
 5
 6
 7
-</pre></td><td class="code"><pre><span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload</span>
-<span class="comment">unzip</span> <span class="comment">YourApp</span>.<span class="comment">ipa</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">r</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/_CodeSignature</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/CodeResources</span>
-<span class="comment">cp</span> <span class="comment">~/Downloads/YourApp</span>.<span class="comment">mobileprovision</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app/embedded</span>.<span class="comment">mobileprovision</span>
-<span class="comment">codesign</span> <span class="literal">-</span><span class="comment">f</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">"iPhone</span> <span class="comment">Distribution:</span> <span class="comment">xxxx"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">resource</span>-<span class="comment">rules</span> <span class="comment">"Payload/YourApp</span>.<span class="comment">app/ResourceRules</span>.<span class="comment">plist"</span> <span class="comment">Payload/YourApp</span>.<span class="comment">app</span>
-<span class="comment">zip</span> <span class="literal">-</span><span class="comment">qr</span> <span class="comment">"YourApp</span>.<span class="comment">resigned</span>.<span class="comment">ipa"</span> <span class="comment">Payload</span>
-<span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">Payload
+</pre></td><td class="code"><pre>rm -rf Payload
+unzip YourApp<span class="preprocessor">.ipa</span>
+rm -r Payload/YourApp<span class="preprocessor">.app</span>/_CodeSignature Payload/YourApp<span class="preprocessor">.app</span>/CodeResources
+<span class="keyword">cp</span> ~/Downloads/YourApp<span class="preprocessor">.mobileprovision</span> Payload/YourApp<span class="preprocessor">.app</span>/embedded<span class="preprocessor">.mobileprovision</span>
+codesign -f -s <span class="string">"iPhone Distribution: xxxx"</span> --resource-rules <span class="string">"Payload/YourApp.app/ResourceRules.plist"</span> Payload/YourApp<span class="preprocessor">.app</span>
+zip -qr <span class="string">"YourApp.resigned.ipa"</span> Payload
+rm -rf Payload
 </pre></td></tr></table></figure>
 
 <p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
@@ -495,7 +514,7 @@ float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment"
     <link href="http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/"/>
     <id>http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/</id>
     <published>2013-09-19T09:10:28.000Z</published>
-    <updated>2013-09-28T15:17:14.000Z</updated>
+    <updated>2014-04-01T15:57:38.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><strong><em>闲扯由来</em></strong></li>
 </ul>
@@ -506,12 +525,16 @@ float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment"
 <ul>
 <li><p><strong><em>切入正题</em></strong></p>
 <ul>
-<li>Github<br>  绝大部分程序猿肯定都知道<a href="https://github.com" target="_blank">Github</a>，也应该拥有自己的账号。如果没有，你现在就应该去创建一个，而且后面也需要用到这个。通过Github，我们可以很方便地分享我们的项目，进行代码管理,重构，与他人协作完成一个项目（当然如果你需要创建私人项目，你需要付费）。<br>  但是在这里，需要用Github提供的<a href="http://pages.github.com/" target="_blank">Github Pages</a>来做我新Blog的服务器。<pre><code>  1. Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。
-  2. 支持Markdown语法来发布文章
-  3. 可以很方便地用git来add, <span class="operator"><span class="keyword">commit</span>和push我的文章。
-  <span class="number">4.</span> 对blog拥有完全的控制权。</code></pre>
-</li>
-<li><p>Hexo<br>  其实<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>对于我也是蛮陌生的。那为啥选择Hexo，而不选择更成熟，更多人使用的<a href="http://octopress.org/" target="_blank">Octopress</a>呢？因为我学过一段时间的<a href="http://nodejs.org/" target="_blank">Node.js</a>,更喜欢Node.js的速度，绝对比基于Ruby的Octopress快。</p>
+<li><p>Github</p>
+<p>  绝大部分程序猿肯定都知道<a href="https://github.com" target="_blank">Github</a>，也应该拥有自己的账号。如果没有，你现在就应该去创建一个，而且后面也需要用到这个。通过Github，我们可以很方便地分享我们的项目，进行代码管理,重构，与他人协作完成一个项目（当然如果你需要创建私人项目，你需要付费）。</p>
+<p>  但是在这里，需要用Github提供的<a href="http://pages.github.com/" target="_blank">Github Pages</a>来做我新Blog的服务器。</p>
+<pre><code>  <span class="number">1.</span> Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。
+  <span class="number">2.</span> 支持Markdown语法来发布文章
+  <span class="number">3.</span> 可以很方便地用git来<span class="keyword">add</span>, commit和<span class="keyword">push</span>我的文章。
+  <span class="number">4.</span> 对blog拥有完全的控制权。
+</code></pre></li>
+<li><p>Hexo</p>
+<p>  其实<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>对于我也是蛮陌生的。那为啥选择Hexo，而不选择更成熟，更多人使用的<a href="http://octopress.org/" target="_blank">Octopress</a>呢？因为我学过一段时间的<a href="http://nodejs.org/" target="_blank">Node.js</a>,更喜欢Node.js的速度，绝对比基于Ruby的Octopress快。</p>
 <blockquote>
 <p>Hexo is a fast, simple and powerful blog framework. It parses your posts with           Markdown or other render engine and generates static files with the beautiful theme.           All of these just take seconds.</p>
 </blockquote>
@@ -522,11 +545,17 @@ float f = ft2<span class="preprocessor">.GetHeight</span>()<span class="comment"
 <ul>
 <li><p><strong><em>安装搭建</em></strong></p>
 <ol>
-<li><a href="http://code.google.com/p/git-osx-installer/" target="_blank">Git</a>，下载安装git for mac，完成后查看版本信息 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">git</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version
-</pre></td></tr></table></figure></li>
-<li><p><a href="http://nodejs.org/" target="_blank">Node.js</a>，可以去官网下载pkg文件安装，但是这里我选择通过nvm安装。</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
+<li><a href="http://code.google.com/p/git-osx-installer/" target="_blank">Git</a>，下载安装git for mac，完成后查看版本信息</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">git</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span>
+</pre></td></tr></table></figure>
+
+
+<pre><code><span class="bullet">2. </span>[<span class="link_label">Node.js</span>](<span class="link_url">http://nodejs.org/</span>)，可以去官网下载pkg文件安装，但是这里我选择通过nvm安装。
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -537,51 +566,63 @@ curl https://raw<span class="preprocessor">.github</span><span class="preprocess
 // 然后安装Node<span class="preprocessor">.js</span>
 nvm install <span class="number">0.10</span><span class="number">.18</span>
 </pre></td></tr></table></figure>
-</li>
-<li><p>通过npm安装Hexo(注意这里是npm，不是nvm)</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">npm</span> install -g hexo
-</pre></td></tr></table></figure><br> 或者升级<br> <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>npm <span class="operator"><span class="keyword">update</span> hexo -g
-</pre></td></tr></table></figure></li>
-<li><p>安装完成后，就可以初始化hexo，<br> <figure class="highlight"><table><tr><td class="gutter"><pre>1
+
+
+<pre><code><span class="number">3.</span> 通过<span class="built_in">npm</span>安装Hexo(注意这里是<span class="built_in">npm</span>，不是nvm)
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>npm <span class="keyword">install</span> -g hexo
+</pre></td></tr></table></figure>
+
+
+<pre><code>    或者升级
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>npm <span class="operator"><span class="keyword">update</span> hexo -g</span>
+</pre></td></tr></table></figure>
+
+
+<pre><code><span class="bullet">4. </span>安装完成后，就可以初始化hexo，
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre><span class="comment">// 在这里，你需要确保你的目录正确</span>
 hexo init ~<span class="regexp">/Developments/</span>Code4fun/Hexo
-</pre></td></tr></table></figure><br>在指定目录生成了如下结构的文件</p>
-<pre><code>    .
- ├── _config<span class="variable">.yml</span>   <span class="comment">// 站点配置文件，包含很多站点配置选项，比如域名</span>
- ├── package<span class="variable">.json</span>  <span class="comment">// 应用程序数据，比如程序名字，版本号等</span>
- ├── scaffolds     <span class="comment">// 存储要发布的post的基本文件</span>
- ├── scripts       <span class="comment">// js文件，保存一个hexo的js扩展文件</span>
- ├── source        <span class="comment">// 保存文章内容</span>
- |   ├── _drafts   ---<span class="comment">// 草稿文件</span>
- |   └── _posts    ---<span class="comment">// 发布的文章</span>
- └── themes        <span class="comment">// 主题文件夹</span></code></pre>
+</pre></td></tr></table></figure>
+
+
+<pre><code>   在指定目录生成了如下结构的文件
+
+           .
+        ├── _config.yml   <span class="comment">// 站点配置文件，包含很多站点配置选项，比如域名</span>
+        ├── <span class="keyword">package</span>.json  <span class="comment">// 应用程序数据，比如程序名字，版本号等</span>
+        ├── scaffolds     <span class="comment">// 存储要发布的post的基本文件</span>
+        ├── scripts       <span class="comment">// js文件，保存一个hexo的js扩展文件</span>
+        ├── source        <span class="comment">// 保存文章内容</span>
+        |   ├── _drafts   ---<span class="comment">// 草稿文件</span>
+        |   └── _posts    ---<span class="comment">// 发布的文章</span>
+        └── themes        <span class="comment">// 主题文件夹</span>
+</code></pre><ul>
+<li><p><strong><em>配置站点</em></strong></p>
+<ol>
+<li><p>配置 _config.yml</p>
+<pre><code> # Site
+ title: Code <span class="keyword">For</span> Fun
+ subtitle: I Share, therefore I am
+ description: A iOS developer’s personal blog.
+ author: Jerry li
+ email: leezhm(at)<span class="number">126</span>.com
+ language: zh-CN
+
+ # URL
+ ## <span class="keyword">If</span> your site <span class="keyword">is</span> put <span class="keyword">in</span> a subdirectory, <span class="keyword">set</span> url <span class="keyword">as</span> <span class="string">'http://yoursite.com/child'</span> <span class="keyword">and</span> root <span class="keyword">as</span> <span class="string">'/child/'</span>
+ url: http:<span class="comment">//code4fun.cn</span>
+ root: /
+ permalink: :year-:month-:day/:title/
+</code></pre></li>
+<li><p>本地测试</p>
 </li>
 </ol>
 </li>
 </ul>
-<ul>
-<li><p><strong><em>配置站点</em></strong></p>
-<ol>
-<li><p>配置 _config.yml</p>
-<pre><code> # <span class="class">Site</span>
- <span class="method">title:</span> <span class="class">Code</span> <span class="class">For</span> <span class="class">Fun</span>
- <span class="method">subtitle:</span> <span class="class">I</span> <span class="class">Share</span>, therefore <span class="class">I</span> am
- <span class="method">description:</span> <span class="class">A</span> iOS developer’s personal blog.
- <span class="method">author:</span> <span class="class">Jerry</span> li
- <span class="method">email:</span> leezhm(at)<span class="number">126.</span>com
- <span class="method">language:</span> zh-<span class="class">CN</span>
-
- # <span class="class">URL</span>
- ## <span class="class">If</span> your site is put in a subdirectory, set url as <span class="string">'http://yoursite.com/child'</span> and root as <span class="string">'/child/'</span>
- <span class="method">url:</span> <span class="method">http:</span>//code4fun.cn
- <span class="method">root:</span> /
- <span class="method">permalink:</span> :year-:month-:day/:title/</code></pre>
-</li>
-<li><p>本地测试</p>
-<p> <figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -593,21 +634,38 @@ hexo generate
 <span class="comment">// 运行默认的server</span>
 hexo <span class="keyword">server</span>
 <span class="comment">//[info] Hexo is running at localhost:4000/. Press Ctrl+C to stop.</span>
-</pre></td></tr></table></figure><br> 然后在你的浏览器中输入网址<a href="http://localhost:4000" target="_blank">localhost:4000</a>，测试。看是否可以看到默认页面。<br> 测试成功后，我们就需要把它送到Github Pages服务器上。</p>
+</pre></td></tr></table></figure>
+
+
+<pre><code>    然后在你的浏览器中输入网址[localhost:<span class="number">4000</span>](http:<span class="comment">//localhost:4000)，测试。看是否可以看到默认页面。</span>
+
+    测试成功后，我们就需要把它送到Github Pages服务器上。
+</code></pre><ul>
+<li><p><strong><em>Github Pages</em></strong></p>
+<ol>
+<li><p>如果没有Github账号，请创建一个账号，然后创建一个Repository。</p>
+<ul>
+<li><p>创建一个blog网站</p>
+<p>  如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是 </p>
+<p>  <strong><em>你的Github账户名.github.com(比如我的就是 leezhm.github.com)</em></strong></p>
+<p>  否则Github无法提供解析。</p>
+</li>
+</ul>
 </li>
 </ol>
 </li>
 </ul>
-<ul>
-<li><p><strong><em>Github Pages</em></strong></p>
-<ol>
-<li>如果没有Github账号，请创建一个账号，然后创建一个Repository。<ul>
-<li>创建一个blog网站<br>  如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是<br>  <strong><em>你的Github账户名.github.com(比如我的就是 leezhm.github.com)</em></strong><br>  否则Github无法提供解析。</li>
-<li>为一个Project创建Page<br>  在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，否则不能正确解析页面。至于怎么在Github上创建branch，并设置default branch，请查询Github Help。<br>补充创建和删除branch<a href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository" target="_blank">Github - Create/Delete branch</a>，以及<a href="https://help.github.com/articles/setting-the-default-branch" target="_blank">Github - Set default branch</a>网址。<br><strong><em>在这里我选择的是创建一个blog网站</em></strong></li>
-</ul>
-</li>
-<li><p>配置_config.yml中的deploy</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
+<pre><code><span class="code">    - 为一个Project创建Page</span>
+
+<span class="code">        在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，否则不能正确解析页面。至于怎么在Github上创建branch，并设置default branch，请查询Github Help。</span>
+
+ 补充创建和删除branch[<span class="link_label">Github - Create/Delete branch</span>](<span class="link_url">https://help.github.com/articles/creating-and-deleting-branches-within-your-repository</span>)，以及[<span class="link_label">Github - Set default branch</span>](<span class="link_url">https://help.github.com/articles/setting-the-default-branch</span>)网址。
+
+  <span class="strong">___在这里我选择的是创建一个blog网站__</span>_
+
+
+<span class="bullet">2. </span>配置_config.yml中的deploy
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -619,19 +677,17 @@ hexo <span class="keyword">server</span>
 <span class="label">repository:</span> https://github<span class="preprocessor">.com</span>/leezhm/leezhm<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span>
 </pre></td></tr></table></figure>
 
-<p>   在这里，需要注意不要写错地址，最好用https。另外branch应该是根据创建的类型不同，做更更改的。</p>
-</li>
-<li><p>生成并发布你网站</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre>1
+<pre><code><span class="code">      在这里，需要注意不要写错地址，最好用https。另外branch应该是根据创建的类型不同，做更更改的。</span>
+
+<span class="bullet">3. </span>生成并发布你网站
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="comment">//</span> <span class="comment">从Markdown生成静态html文件，然后上传至你的repo中</span>
-<span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate
+</pre></td><td class="code"><pre><span class="comment">// 从Markdown生成静态html文件，然后上传至你的repo中</span>
+hexo deploy --generate
 </pre></td></tr></table></figure>
 
-<p>到此应该大功告成，等待大约10分钟之后，你就应该可以使用 <a href="http://你的github账号名.github.io" target="_blank">http://你的github账号名.github.io</a> 来访问你的网站。</p>
-</li>
-</ol>
-</li>
+<pre><code>到此应该大功告成，等待大约<span class="number">10</span>分钟之后，你就应该可以使用 http://你的github账号名<span class="preprocessor">.github</span><span class="preprocessor">.io</span> 来访问你的网站。
+</code></pre><ul>
 <li><p><strong><em>补充</em></strong></p>
 <p>  如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
 </li>
