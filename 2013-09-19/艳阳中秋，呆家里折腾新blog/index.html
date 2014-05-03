@@ -89,7 +89,7 @@
     </p>
   <p class="article-time">
     <time datetime="2013-09-19T09:10:28.000Z" itemprop="datePublished">9月 19 2013</time>
-    更新日期:<time datetime="2014-05-03T07:47:40.000Z" itemprop="dateModified">5月 3 2014</time>
+    更新日期:<time datetime="2014-05-03T08:12:40.000Z" itemprop="dateModified">5月 3 2014</time>
     
   </p>
 </header>
@@ -98,7 +98,7 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#闲扯由来"><span class="toc-number">1.</span> <span class="toc-text">闲扯由来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切入正题"><span class="toc-number">2.</span> <span class="toc-text">切入正题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装搭建"><span class="toc-number">3.</span> <span class="toc-text">安装搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置站点"><span class="toc-number">4.</span> <span class="toc-text">配置站点</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#闲扯由来"><span class="toc-number">1.</span> <span class="toc-text">闲扯由来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切入正题"><span class="toc-number">2.</span> <span class="toc-text">切入正题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装搭建"><span class="toc-number">3.</span> <span class="toc-text">安装搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置站点"><span class="toc-number">4.</span> <span class="toc-text">配置站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充"><span class="toc-number">5.</span> <span class="toc-text">补充</span></a></li></ol>
 		</div>
 		
 		<h2 id="闲扯由来">闲扯由来</h2>
@@ -125,168 +125,100 @@
 </ul>
 <h2 id="安装搭建">安装搭建</h2>
 <ol>
-<li><a href="http://code.google.com/p/git-osx-installer/" target="_blank">Git</a>，下载安装git for mac，完成后查看版本信息</li>
+<li><p><a href="http://code.google.com/p/git-osx-installer/" target="_blank">Git</a>，下载安装git for mac，完成后查看版本信息</p>
+<pre><code> <span class="comment">git</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span>
+</code></pre></li>
+<li><p><a href="http://nodejs.org/" target="_blank">Node.js</a>，可以去官网下载pkg文件安装，但是这里我选择通过nvm安装。</p>
+<pre><code> // 安装nvm
+ curl https://raw<span class="preprocessor">.github</span><span class="preprocessor">.com</span>/creationix/nvm/master/install<span class="preprocessor">.sh</span> | sh
+
+ // 然后安装Node<span class="preprocessor">.js</span>
+ nvm install <span class="number">0.10</span><span class="number">.18</span>
+</code></pre></li>
+<li><p>通过npm安装Hexo(注意这里是npm，不是nvm)</p>
+<pre><code> npm <span class="keyword">install</span> -g hexo
+</code></pre><p> 或者升级</p>
+<pre><code> npm <span class="operator"><span class="keyword">update</span> hexo -g</span>
+</code></pre></li>
+<li><p>安装完成后，就可以初始化hexo，</p>
+<pre><code> <span class="comment">// 在这里，你需要确保你的目录正确</span>
+ hexo init ~<span class="regexp">/Developments/</span>Code4fun/Hexo
+</code></pre><p>在指定目录生成了如下结构的文件</p>
+<pre><code>  .
+ ├── _config.yml   <span class="comment">// 站点配置文件，包含很多站点配置选项，比如域名</span>
+ ├── <span class="keyword">package</span>.json  <span class="comment">// 应用程序数据，比如程序名字，版本号等</span>
+ ├── scaffolds     <span class="comment">// 存储要发布的post的基本文件</span>
+ ├── scripts       <span class="comment">// js文件，保存一个hexo的js扩展文件</span>
+ ├── source        <span class="comment">// 保存文章内容</span>
+ |   ├── _drafts   <span class="comment">// 草稿文件</span>
+ |   └── _posts    <span class="comment">// 发布的文章</span>
+ └── themes        <span class="comment">// 主题文件夹</span>
+</code></pre></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">git</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">version</span>
-</pre></td></tr></table></figure>
-
-
+<h2 id="配置站点">配置站点</h2>
 <ol>
-<li><a href="http://nodejs.org/" target="_blank">Node.js</a>，可以去官网下载pkg文件安装，但是这里我选择通过nvm安装。</li>
+<li><p>配置 config.yml</p>
+<pre><code> # Site
+ title: Code <span class="keyword">For</span> Fun
+ subtitle: I Share, therefore I am
+ description: A iOS developer’s personal blog.
+ author: Jerry li
+ email: leezhm(at)<span class="number">126</span>.com
+ language: zh-CN
+
+ # URL
+ # <span class="keyword">If</span> your site <span class="keyword">is</span> put <span class="keyword">in</span> a subdirectory, <span class="keyword">set</span> url 
+ # <span class="keyword">as</span> <span class="string">'http://yoursite.com/child'</span> <span class="keyword">and</span> root <span class="keyword">as</span> <span class="string">'/child/'</span>
+ url: http:<span class="comment">//code4fun.cn</span>
+ root: /
+ permalink: :year-:month-:day/:title/
+</code></pre></li>
+<li><p>本地测试</p>
+<pre><code> <span class="comment">// 生成文章</span>
+ hexo generate 
+
+ <span class="comment">// 运行默认的server</span>
+ hexo <span class="keyword">server</span>
+ <span class="comment">//[info] Hexo is running at localhost:4000/. Press Ctrl+C to stop.</span>
+</code></pre><p> 然后在你的浏览器中输入网址<a href="http://localhost:4000" target="_blank">localhost:4000</a>，测试。看是否可以看到默认页面。</p>
+<p> 测试成功后，我们就需要把它送到Github Pages服务器上。</p>
+</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre>// 安装nvm
-curl https://raw<span class="preprocessor">.github</span><span class="preprocessor">.com</span>/creationix/nvm/master/install<span class="preprocessor">.sh</span> | sh
-
-// 然后安装Node<span class="preprocessor">.js</span>
-nvm install <span class="number">0.10</span><span class="number">.18</span>
-</pre></td></tr></table></figure>
-
-
 <ol>
-<li>通过npm安装Hexo(注意这里是npm，不是nvm)</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>npm <span class="keyword">install</span> -g hexo
-</pre></td></tr></table></figure>
-
-
-<pre><code>或者升级
-</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>npm <span class="operator"><span class="keyword">update</span> hexo -g</span>
-</pre></td></tr></table></figure>
-
-
-<ol>
-<li>安装完成后，就可以初始化hexo，</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="comment">// 在这里，你需要确保你的目录正确</span>
-hexo init ~<span class="regexp">/Developments/</span>Code4fun/Hexo
-</pre></td></tr></table></figure>
-
-
-<pre><code>在指定目录生成了如下结构的文件
-
-     .
-    ├── _config.yml   <span class="comment">// 站点配置文件，包含很多站点配置选项，比如域名</span>
-    ├── <span class="keyword">package</span>.json  <span class="comment">// 应用程序数据，比如程序名字，版本号等</span>
-    ├── scaffolds     <span class="comment">// 存储要发布的post的基本文件</span>
-    ├── scripts       <span class="comment">// js文件，保存一个hexo的js扩展文件</span>
-    ├── source        <span class="comment">// 保存文章内容</span>
-    |   ├── _drafts   <span class="comment">// 草稿文件</span>
-    |   └── _posts    <span class="comment">// 发布的文章</span>
-    └── themes        <span class="comment">// 主题文件夹</span>
-</code></pre><h2 id="配置站点">配置站点</h2>
-<ol>
-<li>配置 config.yml</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-</pre></td><td class="code"><pre>    <span class="comment"># Site</span>
-	title: Code For Fun
-	subtitle: I Share, therefore I am
-	description: A iOS developer’s personal blog.
-	author: Jerry li
-	email: leezhm(at)126.com
-	language: zh-CN
-
-	# URL
-	# If your site is put in a subdirectory, set url 
-	# as 'http://yoursite.com/child' and root as '/child/'
-	url: http://code4fun.cn
-	root: /
-	permalink: :year-:month-:day/:title/
-</pre></td></tr></table></figure>
-
-<ol>
-<li>本地测试</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="comment">// 生成文章</span>
-hexo generate 
-	
-<span class="comment">// 运行默认的server</span>
-hexo <span class="keyword">server</span>
-<span class="comment">//[info] Hexo is running at localhost:4000/. Press Ctrl+C to stop.</span>
-</pre></td></tr></table></figure>
-
-
-<pre><code>然后在你的浏览器中输入网址[<span class="link_label">localhost:4000</span>](<span class="link_url">http://localhost:4000</span>)，测试。看是否可以看到默认页面。
-
-测试成功后，我们就需要把它送到Github Pages服务器上。
-</code></pre><ol>
 <li>Github Pages</li>
 </ol>
 <ul>
-<li><p>如果没有Github账号，请创建一个账号，然后创建一个Repository。</p>
+<li><p>如果没有<a href="https://github.com" target="_blank">Github</a>账号，请创建一个账号，然后创建一个Repository。</p>
 <ul>
 <li><p>创建一个blog网站</p>
-<p>  如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是 </p>
-<p>  <strong><em>你的Github账户名.github.com(比如我的就是 leezhm.github.com)</em></strong></p>
-<p>  否则Github无法提供解析。</p>
+<p>如果为一个blog创建网站，Github Pages有特殊的规定，这个repository的名字格式必须是 </p>
+<p><strong><em>你的Github账户名.github.com(比如我的就是 leezhm.github.com)</em></strong></p>
+<p>否则Github无法提供解析。</p>
+</li>
+<li><p>为一个Project创建Page</p>
+<p>在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，否则不能正确解析页面。至于怎么在Github上创建branch，并设置default branch，请查询Github Help。</p>
+<p><strong>BTW:</strong>创建和删除branch<a href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository" target="_blank">Github - Create/Delete branch</a>，以及<a href="https://help.github.com/articles/setting-the-default-branch" target="_blank">Github - Set default branch</a>网址。</p>
 </li>
 </ul>
 </li>
-</ul>
-<pre><code>    - 为一个Project创建Page
-
-        在这里，需要特别注意的是，Github Pages规定这个repo的branch必须是gh-pages，否则不能正确解析页面。至于怎么在Github上创建branch，并设置default branch，请查询Github Help。
-
-         __BTW:__创建和删除branch[Github - <span class="operator"><span class="keyword">Create</span>/<span class="keyword">Delete</span> branch](https://help.github.com/articles/creating-<span class="keyword">and</span>-deleting-branches-within-your-repository)，以及[Github - <span class="keyword">Set</span> <span class="keyword">default</span> branch](https://help.github.com/articles/setting-the-<span class="keyword">default</span>-branch)网址。</span>
-</code></pre><ul>
-<li>配置config.yml中的deploy(<strong><em>在这里我选择的是创建一个blog网站</em></strong>)</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre><span class="preprocessor"># Deployment</span>
-<span class="preprocessor"># Docs: http://zespia.tw/hexo/docs/deploy.html</span>
-<span class="label">deploy:</span>
-      type: github
-<span class="label">repository:</span> https://github<span class="preprocessor">.com</span>/leezhm/leezhm<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span>
-</pre></td></tr></table></figure>
-
-<pre><code>      在这里，需要注意不要写错地址，最好用https。另外branch应该是根据创建的类型不同，做更更改的。
-
-<span class="addition">+ 生成并发布你网站</span>
-</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="comment">// 从Markdown生成静态html文件，然后上传至你的repo中</span>
-hexo deploy --generate
-</pre></td></tr></table></figure>
-
-<pre><code>到此应该大功告成，等待大约<span class="number">10</span>分钟之后，你就应该可以使用 http://你的github账号名<span class="preprocessor">.github</span><span class="preprocessor">.io</span> 来访问你的网站。
-</code></pre><ul>
-<li><p><strong><em>补充</em></strong></p>
-<p>  如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
+<li><p>配置config.yml中的deploy(<strong><em>在这里我选择的是创建一个blog网站</em></strong>)</p>
+<pre><code>  <span class="preprocessor"># Deployment</span>
+  <span class="preprocessor"># Docs: http://zespia.tw/hexo/docs/deploy.html</span>
+  deploy:
+        type: github
+  repository: https://github<span class="preprocessor">.com</span>/leezhm/leezhm<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span>
+</code></pre><p>  在这里，需要注意不要写错地址，最好用https。另外branch应该是根据创建的类型不同，做更更改的。</p>
 </li>
 </ul>
+<ul>
+<li><p>生成并发布你网站</p>
+<pre><code>  <span class="comment"> // 从Markdown生成静态html文件，然后上传至你的repo中</span>
+   hexo deploy <span class="comment">--generate</span>
+</code></pre><p>  到此应该大功告成，等待大约10分钟之后，你就应该可以使用 <a href="http://你的github账号名.github.io" target="_blank">http://你的github账号名.github.io</a> 来访问你的网站。</p>
+</li>
+</ul>
+<h2 id="补充">补充</h2>
+<p>如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -331,7 +263,7 @@ hexo deploy --generate
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#闲扯由来"><span class="toc-number">1.</span> <span class="toc-text">闲扯由来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切入正题"><span class="toc-number">2.</span> <span class="toc-text">切入正题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装搭建"><span class="toc-number">3.</span> <span class="toc-text">安装搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置站点"><span class="toc-number">4.</span> <span class="toc-text">配置站点</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#闲扯由来"><span class="toc-number">1.</span> <span class="toc-text">闲扯由来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切入正题"><span class="toc-number">2.</span> <span class="toc-text">切入正题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装搭建"><span class="toc-number">3.</span> <span class="toc-text">安装搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置站点"><span class="toc-number">4.</span> <span class="toc-text">配置站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充"><span class="toc-number">5.</span> <span class="toc-text">补充</span></a></li></ol>
   </div>
 
 <div id="asidepart">
