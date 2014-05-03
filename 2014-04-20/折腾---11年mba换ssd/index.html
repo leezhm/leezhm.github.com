@@ -9,11 +9,15 @@
     
     <meta name="author" content="leezhm">
     
+    <meta name="description" itemprop="description" content="给11年的MBP 723换SSD，然后制作安装U盘，全新安装Mavericks！安装Homebrew，然后通过brew来安装git，nodejs，hexo等等一系列码农必须的软件。如何为SSD真正开启trim支持。">
+    
     
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="zhengminli" />
     <meta name="twitter:title" content="折腾 - 11年MBA换SSD | Code For Fun" />
+      
+        <meta name="twitter:description" content="给11年的MBP 723换SSD，然后制作安装U盘，全新安装Mavericks！安装Homebrew，然后通过brew来安装git，nodejs，hexo等等一系列码农必须的软件。如何为SSD真正开启trim支持。" />
       
     
     
@@ -57,6 +61,8 @@
 					
 						<li><a href="/atom.xml">Rss</a></li>
 					
+						<li><a href="/about">About</a></li>
+					
 					<li>
 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
@@ -85,7 +91,7 @@
     </p>
   <p class="article-time">
     <time datetime="2014-04-20T15:39:04.000Z" itemprop="datePublished">4月 20 2014</time>
-    更新日期:<time datetime="2014-04-20T15:39:04.000Z" itemprop="dateModified">4月 20 2014</time>
+    更新日期:<time datetime="2014-05-03T17:30:40.000Z" itemprop="dateModified">5月 4 2014</time>
     
   </p>
 </header>
@@ -94,13 +100,122 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#制作安装盘"><span class="toc-number">1.</span> <span class="toc-text">制作安装盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装系统"><span class="toc-number">2.</span> <span class="toc-text">安装系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件安装"><span class="toc-number">3.</span> <span class="toc-text">软件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开启Trim"><span class="toc-number">4.</span> <span class="toc-text">开启Trim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Windows"><span class="toc-number">5.</span> <span class="toc-text">安装Windows</span></a></li></ol>
 		</div>
 		
-		  
+		<p>11年的MBP 723，中间各种折腾，12年初升级到了8GB的内存，但是到现在发现还是很慢，换新的RMBP，被老婆以要提前还贷，要买车否决了。经过考虑之后决定更换SSD，曲线救国。</p>
+<p>再经过一番权衡后，决定入手Samsung 840 Pro(256G)，然后把原来的750G的硬盘换到基本不用的光驱那去，这样机器就扩充到了256G SSD + 750G的机械盘了。</p>
+<p>拆卸安装的过程是相当的简单，记得用配对的螺丝刀（卖硬盘托架和光驱盒子的时候，卖家送了一套。）不然容易坏螺钉啊。对于硬件拆装，比较简单，这里就不做说明，网上有很多的视频教程，只是提醒大家，拆机要注意<code>防静电</code>，不要到时候后悔。</p>
+<h2 id="制作安装盘">制作安装盘</h2>
+<p>苹果的操作系统其实可以直接通过网络恢复，考虑到恢复时间实在太长，所以最好自己下载然后制作成安装盘，这样安装起来就非常快。</p>
+<ul>
+<li><p>准备好一个8G以上的空白U盘，准备好另外一台Mac电脑用来制作安装盘。</p>
+</li>
+<li><p>新的操作系统Mavericks.app可以在AppStore上直接下载。在另一台电脑上把文件下载好，下载后文件Mavericks.app应该在你的/Applications目录下。</p>
+</li>
+<li><p>插入U盘，执行：</p>
+<pre><code>  sudo /Applications/Install<span class="command">\ </span>OS<span class="command">\ </span>X<span class="command">\ </span>Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install<span class="command">\ </span>OS<span class="command">\ </span>X<span class="command">\ </span>Mavericks.app  --nointeraction
+</code></pre><p>   以上命令会将U盘先格式化，然后制作成安装盘，整个过程大概需要40分钟左右。</p>
+</li>
+</ul>
+<h2 id="安装系统">安装系统</h2>
+<ul>
+<li><p>插入上一步制作好的U盘，启动时按住 option 键，然后选择通过U盘启动。</p>
+<blockquote>
+<ol>
+<li>进入磁盘工具对硬盘进行格式化（<strong><em>你也可以选择不格式化，这样就是覆盖安装</em></strong>）</li>
+<li>根据提示进行系统安装，完成整个安装过程大概需要30分钟。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>安装完成后，推荐通过<code>App Store</code>的<code>Updates</code>和<code>Purchase</code>页面分别进行系统更新和已购买软件安装。</p>
+</li>
+</ul>
+<h2 id="软件安装">软件安装</h2>
+<p>作为一个码农，软件安装推荐按照我下面的顺序，选择安装自己需要的软件。</p>
+<ol>
+<li><p><code>Homebrew</code>码农<code>Mac OSX</code>程序安装利器（<strong><em>汗，居然要梯子，万恶的GWF</em></strong>）</p>
+<pre><code> LIZHM:~ Leezhm$ ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)</span>"</span>
+</code></pre><p> 安装完成之后推荐进行例行检查，是否完全正确安装，以及版本号。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>brew doctor
+ <span class="constant">Your</span> system is ready to brew.
+
+ <span class="constant">LIZHMs</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>brew -v
+ <span class="constant">Homebrew</span> <span class="number">0</span>.<span class="number">9.5</span>
+</code></pre></li>
+<li><p>安装码农代码管理利器<code>Git</code>,并检查安装版本。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>brew install git
+ <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>git --version
+ git version <span class="number">1.9</span>.<span class="number">2</span>
+</code></pre><p> <strong><em>注：</em></strong>如果你的系统中已经安装了低版本的git，请在<code>.bash_profile</code>中添加brew安装软件目录到’PATH’<strong><em>(如果没有.bash_profile，请重新创建)</em></strong></p>
+<pre><code> <span class="comment"># The following path contains all soft $PATH which installed by brew</span>
+ PATH=<span class="string">"/usr/local/bin:<span class="variable">$PATH</span>"</span>
+</code></pre><p> 一切顺利后，在这里需要配置git，然后通过<code>git config --list</code>查看配置情况。</p>
+<pre><code> git config --<span class="keyword">global</span> user.email <span class="string">"xxx@yy.com"</span>
+ git config --<span class="keyword">global</span> user.name <span class="string">"leezhm"</span>
+ git config --<span class="keyword">global</span> core.<span class="keyword">editor</span> <span class="string">"vi"</span> 
+ git config --<span class="keyword">global</span> <span class="keyword">color</span>.ui true
+</code></pre><p> 最后，既然要用git，肯定少不了高大上的<a href="https://github.com" target="_blank">Github</a>，顺便在这里附带上’Github’的<a href="https://help.github.com/articles/generating-ssh-keys" target="_blank">how to generate a ssh key</a>，以方便后续的使用体验。</p>
+</li>
+<li><p>由于我的blog是基于<a href="http://hexo.io" target="_blank">Hexo</a>,所以下面用homebrew安装<code>node.js</code>。也许你是别的原因，需要node.js。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>brew install nodejs
+</code></pre><p> 虽然上面安装过程不高大上，但是它方便快捷简单有没有。完成之后也推荐进行版本号检查。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>node -v
+ v<span class="number">0</span>.<span class="number">10.26</span>
+ <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>npm -v
+ <span class="number">1.4</span>.<span class="number">7</span> 
+</code></pre></li>
+<li><p>使用<code>npm</code>安装高大上的<code>Hexo</code></p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>sudo npm install hexo -g
+</code></pre><p> 更多问题，比如<code>如何优雅，有格调地撰写blog</code>，请访问<a href="http://hexo.io" target="_blank">Hexo</a>。</p>
+</li>
+<li><p>iOS开发必备利器，高大上的<code>cocoapods</code>，但是在安装前，请先安以下步骤做些别的准备工作，别问为什么，因为你懂的，但别忘了’感谢’<code>党</code>，‘感谢’<code>祖国</code>，感谢<code>淘宝</code>，感谢教主<code>马云</code>！</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span> gem sources --remove <span class="symbol">https:</span>/<span class="regexp">/rubygems.org/</span>
+ <span class="symbol">https:</span>/<span class="regexp">/rubygems.org/</span> removed from sources
+ <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>gem source -a <span class="symbol">http:</span>/<span class="regexp">/ruby.taobao.org/</span>
+ <span class="symbol">http:</span>/<span class="regexp">/ruby.taobao.org/</span> added to sources
+ <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>gem source
+ *** <span class="constant">CURRENT</span> <span class="constant">SOURCES</span> ***
+
+ <span class="symbol">http:</span>/<span class="regexp">/ruby.taobao.org/</span>
+</code></pre><p> 准备工作做好了，也感谢了，开始正事，安装<a href="http://cocoapods.org/" target="_blank">Cocoapods</a>。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>sudo gem install cocoapods
+</code></pre><p> 别以为到了这里就完事了，如果你不想一直’感谢Dang’，你就应该看看<a href="http://akinliu.github.io/2014/05/03/cocoapods-specs-/" target="_blank">Cocoapods Specs天朝镜像</a>，当然别忘记了感谢<code>阿宽</code>，另外如果你还没有用过<code>Cocoapods</code>，那我也给你附一份教程，请访问<a href="http://code4app.com/article/cocoapods-install-usage" target="_blank">CocoaPods安装和使用教程</a>，同样别忘记了感谢作者，嗯，我，你就算了，留着去’感谢Dang’吧！</p>
+</li>
+<li><p><code>Xcode</code>, <code>Dash</code>， <code>Sublime Text</code>, <code>Mou</code>等等啥的，可以另外自己安装了，很是简单。</p>
+</li>
+</ol>
+<h2 id="开启Trim">开启Trim</h2>
+<p>如果你还不知道<code>trim</code>是个啥，请访问<a href="http://en.wikipedia.org/wiki/Trim_(computing\" target="_blank">Wikipedia-Trim</a>)。</p>
+<blockquote>
+<p>请先到System Information中SATA Drive Tree中查看<code>TRIM Support</code>是否是<code>Yes</code>，如果不是就需要下面步骤，否则请跳过！</p>
+</blockquote>
+<ol>
+<li><p>为了安全，请先备份驱动(按照提示输入密码)</p>
+<pre><code> sudo <span class="keyword">cp</span> -r /System/Library/Extensions/IOAHCIFamily<span class="preprocessor">.kext</span>/Contents/PlugIns/IOAHCIBlockStorage<span class="preprocessor">.kext</span>/ /System/Library/Extensions/IOAHCIFamily<span class="preprocessor">.kext</span>/Contents/PlugIns/IOAHCIBlockStorage<span class="preprocessor">.BACKUP</span>
+</code></pre></li>
+<li><p>开始trim </p>
+<pre><code> sudo perl -pi -e 's|(<span class="command">\x</span>52<span class="command">\x</span>6F<span class="command">\x</span>74<span class="command">\x</span>61<span class="command">\x</span>74<span class="command">\x</span>69<span class="command">\x</span>6F<span class="command">\x</span>6E<span class="command">\x</span>61<span class="command">\x</span>6C<span class="command">\x</span>00<span class="special">{</span>1,20<span class="special">}</span>)<span class="special">[</span>^<span class="command">\x</span>00<span class="special">]</span><span class="special">{</span>9<span class="special">}</span>(<span class="command">\x</span>00<span class="special">{</span>1,20<span class="special">}</span><span class="command">\x</span>54)|<span class="formula">$1<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00$</span>2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
+</code></pre></li>
+</ol>
+<h2 id="安装Windows">安装Windows</h2>
+<blockquote>
+<p>啥，你再说一遍？<br>别闹了，重启开始享受全新的MBP吧！</p>
+</blockquote>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/SSD/">SSD</a><a href="/tags/Mavericks/">Mavericks</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/折腾/">折腾</a>
+</div>
 
 
 
@@ -136,7 +251,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#制作安装盘"><span class="toc-number">1.</span> <span class="toc-text">制作安装盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装系统"><span class="toc-number">2.</span> <span class="toc-text">安装系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件安装"><span class="toc-number">3.</span> <span class="toc-text">软件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开启Trim"><span class="toc-number">4.</span> <span class="toc-text">开启Trim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Windows"><span class="toc-number">5.</span> <span class="toc-text">安装Windows</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -144,23 +259,63 @@
 <aside class="clearfix">
 
   
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/C-Sharp/" title="C-Sharp">C-Sharp<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Git/" title="Git">Git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾/" title="折腾">折腾<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09">九月 2013</a><span class="archive-list-count">4</span></li></ul>
+  </div>
+
 
   
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/文章, Dispose/" title="文章, Dispose">文章, Dispose<sup>1</sup></a></li>
+			<li><a href="/tags/C-Sharp/" title="C-Sharp">C-Sharp<sup>1</sup></a></li>
 		
-			<li><a href="/tags/文章, iOS/" title="文章, iOS">文章, iOS<sup>1</sup></a></li>
+			<li><a href="/tags/Dispose/" title="Dispose">Dispose<sup>1</sup></a></li>
 		
-			<li><a href="/tags/文章，Git/" title="文章，Git">文章，Git<sup>1</sup></a></li>
+			<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
 		
-			<li><a href="/tags/文章，Github Pages，Hexo/" title="文章，Github Pages，Hexo">文章，Github Pages，Hexo<sup>1</sup></a></li>
+			<li><a href="/tags/Github Pages/" title="Github Pages">Github Pages<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Mavericks/" title="Mavericks">Mavericks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/SSD/" title="SSD">SSD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>1</sup></a></li>
 		
 		</ul>
 </div>
 
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://yangjian.me" target="_blank" title="YangJian">Alimon's Blog</a></li>
+      <li><a href="http://zespia.tw/hexo" target="_blank" title="Hexo">Hexo</a></li>
+    </ul>
+</div>
 
 </aside>
 </div>

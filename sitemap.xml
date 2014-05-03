@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/</loc>
+    <lastmod>2014-05-03T17:48:29.000Z</lastmod>
+  </url>
+  <url>
     <loc>http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/</loc>
-    <lastmod>2014-05-03T08:29:18.000Z</lastmod>
+    <lastmod>2014-05-03T17:40:31.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://code4fun.cn/2013-09-24/explicitly-release-resources-in-c/</loc>
+    <lastmod>2014-05-03T17:39:40.000Z</lastmod>
   </url>
   <url>
     <loc>http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/</loc>
-    <lastmod>2014-05-03T08:26:17.000Z</lastmod>
+    <lastmod>2014-05-03T17:38:02.000Z</lastmod>
   </url>
   <url>
-    <loc>http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/</loc>
-    <lastmod>2014-05-03T08:12:40.000Z</lastmod>
+    <loc>http://code4fun.cn/2014-04-20/折腾---11年mba换ssd/</loc>
+    <lastmod>2014-05-03T17:30:40.000Z</lastmod>
+  </url>
+  <url>
+    <loc>http://code4fun.cn/categories/index.html</loc>
+    <lastmod>2014-05-03T14:31:42.000Z</lastmod>
   </url>
   <url>
     <loc>http://code4fun.cn/404.html</loc>
@@ -19,13 +31,5 @@
   <url>
     <loc>http://code4fun.cn/about/index.html</loc>
     <lastmod>2014-05-02T16:29:25.000Z</lastmod>
-  </url>
-  <url>
-    <loc>http://code4fun.cn/2014-04-20/折腾---11年mba换ssd/</loc>
-    <lastmod>2014-04-20T15:39:04.000Z</lastmod>
-  </url>
-  <url>
-    <loc>http://code4fun.cn/2013-09-24/explicitly-release-resources-in-c/</loc>
-    <lastmod>2013-09-28T15:00:12.000Z</lastmod>
   </url>
 </urlset>

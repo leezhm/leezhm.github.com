@@ -9,15 +9,15 @@
     
     <meta name="author" content="leezhm">
     
-    <meta name="description" content="闲扯由来
-之前基于wordpress的blog在VPS到期后，就不想续费折腾了。在这里还是要感谢这个伟大的开源项目，你带给我了许多方便。
-其实我觉得我是个很懒的完美主义者，话有点不顺口，细想也不通的，但是我就是这么认为的。每每总结留在硬盘上的一篇篇未写完的blog，理由就是排版这么烂，发上去也需要再">
+    <meta name="description" itemprop="description" content="使用Hexo来搭建自己的静态博客，并部署到Github Pages上去。此文一步一步地完整讲解了怎么样安装git，安装hexo，初始化hexo，配置主题，撰写文章，生成，测试发布文档，并deploy到Github Pages上。当然也讲解了Github Pages建立网站和Project Page的区别。">
     
     
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="zhengminli" />
     <meta name="twitter:title" content="艳阳中秋，呆家里折腾新Blog | Code For Fun" />
+      
+        <meta name="twitter:description" content="使用Hexo来搭建自己的静态博客，并部署到Github Pages上去。此文一步一步地完整讲解了怎么样安装git，安装hexo，初始化hexo，配置主题，撰写文章，生成，测试发布文档，并deploy到Github Pages上。当然也讲解了Github Pages建立网站和Project Page的区别。" />
       
     
     
@@ -61,6 +61,8 @@
 					
 						<li><a href="/atom.xml">Rss</a></li>
 					
+						<li><a href="/about">About</a></li>
+					
 					<li>
 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
@@ -89,7 +91,7 @@
     </p>
   <p class="article-time">
     <time datetime="2013-09-19T09:10:28.000Z" itemprop="datePublished">9月 19 2013</time>
-    更新日期:<time datetime="2014-05-03T08:12:40.000Z" itemprop="dateModified">5月 3 2014</time>
+    更新日期:<time datetime="2014-05-03T17:48:29.000Z" itemprop="dateModified">5月 4 2014</time>
     
   </p>
 </header>
@@ -111,11 +113,15 @@
 <li><p>Github</p>
 <p>  绝大部分程序猿肯定都知道<a href="https://github.com" target="_blank">Github</a>，也应该拥有自己的账号。如果没有，你现在就应该去创建一个，而且后面也需要用到这个。通过Github，我们可以很方便地分享我们的项目，进行代码管理,重构，与他人协作完成一个项目（当然如果你需要创建私人项目，你需要付费）。</p>
 <p>  但是在这里，需要用Github提供的<a href="http://pages.github.com/" target="_blank">Github Pages</a>来做我新Blog的服务器。</p>
-<pre><code>  <span class="number">1.</span> Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。
-  <span class="number">2.</span> 支持Markdown语法来发布文章
-  <span class="number">3.</span> 可以很方便地用git来<span class="keyword">add</span>, commit和<span class="keyword">push</span>我的文章。
-  <span class="number">4.</span> 对blog拥有完全的控制权。
-</code></pre></li>
+<blockquote>
+<ol>
+<li>Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。</li>
+<li>支持Markdown语法来发布文章</li>
+<li>可以很方便地用git来add, commit和push我的文章。</li>
+<li>对blog拥有完全的控制权。</li>
+</ol>
+</blockquote>
+</li>
 <li><p>Hexo</p>
 <p>  其实<a href="http://hexo.io/" target="_blank">Hexo</a>对于我也是蛮陌生的。那为啥选择Hexo，而不选择更成熟，更多人使用的<a href="http://octopress.org/" target="_blank">Octopress</a>呢？因为我学过一段时间的<a href="http://nodejs.org/" target="_blank">Node.js</a>,更喜欢Node.js的速度，绝对比基于Ruby的Octopress快。</p>
 <blockquote>
@@ -225,9 +231,14 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/文章，Github Pages，Hexo/">文章，Github Pages，Hexo</a>
+  <span></span> <a href="/tags/Github Pages/">Github Pages</a><a href="/tags/Hexo/">Hexo</a>
   </div>
 
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+</div>
 
 
 
@@ -271,23 +282,63 @@
 <aside class="clearfix">
 
   
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/C-Sharp/" title="C-Sharp">C-Sharp<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Git/" title="Git">Git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/iOS/" title="iOS">iOS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/折腾/" title="折腾">折腾<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09">九月 2013</a><span class="archive-list-count">4</span></li></ul>
+  </div>
+
 
   
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/文章, Dispose/" title="文章, Dispose">文章, Dispose<sup>1</sup></a></li>
+			<li><a href="/tags/C-Sharp/" title="C-Sharp">C-Sharp<sup>1</sup></a></li>
 		
-			<li><a href="/tags/文章, iOS/" title="文章, iOS">文章, iOS<sup>1</sup></a></li>
+			<li><a href="/tags/Dispose/" title="Dispose">Dispose<sup>1</sup></a></li>
 		
-			<li><a href="/tags/文章，Git/" title="文章，Git">文章，Git<sup>1</sup></a></li>
+			<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
 		
-			<li><a href="/tags/文章，Github Pages，Hexo/" title="文章，Github Pages，Hexo">文章，Github Pages，Hexo<sup>1</sup></a></li>
+			<li><a href="/tags/Github Pages/" title="Github Pages">Github Pages<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Mavericks/" title="Mavericks">Mavericks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/SSD/" title="SSD">SSD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>1</sup></a></li>
 		
 		</ul>
 </div>
 
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://yangjian.me" target="_blank" title="YangJian">Alimon's Blog</a></li>
+      <li><a href="http://zespia.tw/hexo" target="_blank" title="Hexo">Hexo</a></li>
+    </ul>
+</div>
 
 </aside>
 </div>

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[I Share, therefore I am]]></subtitle>
   <link href="http://code4fun.cn/atom.xml" rel="self"/>
   <link href="http://code4fun.cn"/>
-  <updated>2014-05-03T10:11:56.616Z</updated>
+  <updated>2014-05-03T17:49:51.211Z</updated>
   <id>http://code4fun.cn/</id>
   <author>
     <name><![CDATA[leezhm]]></name>
@@ -16,15 +16,117 @@
     <link href="http://code4fun.cn/2014-04-20/折腾---11年mba换ssd/"/>
     <id>http://code4fun.cn/2014-04-20/折腾---11年mba换ssd/</id>
     <published>2014-04-20T15:39:04.000Z</published>
-    <updated>2014-04-20T15:39:04.000Z</updated>
-    <content type="html"><![CDATA[]]></content>
+    <updated>2014-05-03T17:30:40.000Z</updated>
+    <content type="html"><![CDATA[<p>11年的MBP 723，中间各种折腾，12年初升级到了8GB的内存，但是到现在发现还是很慢，换新的RMBP，被老婆以要提前还贷，要买车否决了。经过考虑之后决定更换SSD，曲线救国。</p>
+<p>再经过一番权衡后，决定入手Samsung 840 Pro(256G)，然后把原来的750G的硬盘换到基本不用的光驱那去，这样机器就扩充到了256G SSD + 750G的机械盘了。</p>
+<p>拆卸安装的过程是相当的简单，记得用配对的螺丝刀（卖硬盘托架和光驱盒子的时候，卖家送了一套。）不然容易坏螺钉啊。对于硬件拆装，比较简单，这里就不做说明，网上有很多的视频教程，只是提醒大家，拆机要注意<code>防静电</code>，不要到时候后悔。</p>
+<h2 id="制作安装盘">制作安装盘</h2>
+<p>苹果的操作系统其实可以直接通过网络恢复，考虑到恢复时间实在太长，所以最好自己下载然后制作成安装盘，这样安装起来就非常快。</p>
+<ul>
+<li><p>准备好一个8G以上的空白U盘，准备好另外一台Mac电脑用来制作安装盘。</p>
+</li>
+<li><p>新的操作系统Mavericks.app可以在AppStore上直接下载。在另一台电脑上把文件下载好，下载后文件Mavericks.app应该在你的/Applications目录下。</p>
+</li>
+<li><p>插入U盘，执行：</p>
+<pre><code>  sudo /Applications/Install<span class="command">\ </span>OS<span class="command">\ </span>X<span class="command">\ </span>Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install<span class="command">\ </span>OS<span class="command">\ </span>X<span class="command">\ </span>Mavericks.app  --nointeraction
+</code></pre><p>   以上命令会将U盘先格式化，然后制作成安装盘，整个过程大概需要40分钟左右。</p>
+</li>
+</ul>
+<h2 id="安装系统">安装系统</h2>
+<ul>
+<li><p>插入上一步制作好的U盘，启动时按住 option 键，然后选择通过U盘启动。</p>
+<blockquote>
+<ol>
+<li>进入磁盘工具对硬盘进行格式化（<strong><em>你也可以选择不格式化，这样就是覆盖安装</em></strong>）</li>
+<li>根据提示进行系统安装，完成整个安装过程大概需要30分钟。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>安装完成后，推荐通过<code>App Store</code>的<code>Updates</code>和<code>Purchase</code>页面分别进行系统更新和已购买软件安装。</p>
+</li>
+</ul>
+<h2 id="软件安装">软件安装</h2>
+<p>作为一个码农，软件安装推荐按照我下面的顺序，选择安装自己需要的软件。</p>
+<ol>
+<li><p><code>Homebrew</code>码农<code>Mac OSX</code>程序安装利器（<strong><em>汗，居然要梯子，万恶的GWF</em></strong>）</p>
+<pre><code> LIZHM:~ Leezhm$ ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)</span>"</span>
+</code></pre><p> 安装完成之后推荐进行例行检查，是否完全正确安装，以及版本号。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>brew doctor
+ <span class="constant">Your</span> system is ready to brew.
+
+ <span class="constant">LIZHMs</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>brew -v
+ <span class="constant">Homebrew</span> <span class="number">0</span>.<span class="number">9.5</span>
+</code></pre></li>
+<li><p>安装码农代码管理利器<code>Git</code>,并检查安装版本。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>brew install git
+ <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>git --version
+ git version <span class="number">1.9</span>.<span class="number">2</span>
+</code></pre><p> <strong><em>注：</em></strong>如果你的系统中已经安装了低版本的git，请在<code>.bash_profile</code>中添加brew安装软件目录到’PATH’<strong><em>(如果没有.bash_profile，请重新创建)</em></strong></p>
+<pre><code> <span class="comment"># The following path contains all soft $PATH which installed by brew</span>
+ PATH=<span class="string">"/usr/local/bin:<span class="variable">$PATH</span>"</span>
+</code></pre><p> 一切顺利后，在这里需要配置git，然后通过<code>git config --list</code>查看配置情况。</p>
+<pre><code> git config --<span class="keyword">global</span> user.email <span class="string">"xxx@yy.com"</span>
+ git config --<span class="keyword">global</span> user.name <span class="string">"leezhm"</span>
+ git config --<span class="keyword">global</span> core.<span class="keyword">editor</span> <span class="string">"vi"</span> 
+ git config --<span class="keyword">global</span> <span class="keyword">color</span>.ui true
+</code></pre><p> 最后，既然要用git，肯定少不了高大上的<a href="https://github.com" target="_blank">Github</a>，顺便在这里附带上’Github’的<a href="https://help.github.com/articles/generating-ssh-keys" target="_blank">how to generate a ssh key</a>，以方便后续的使用体验。</p>
+</li>
+<li><p>由于我的blog是基于<a href="http://hexo.io" target="_blank">Hexo</a>,所以下面用homebrew安装<code>node.js</code>。也许你是别的原因，需要node.js。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>brew install nodejs
+</code></pre><p> 虽然上面安装过程不高大上，但是它方便快捷简单有没有。完成之后也推荐进行版本号检查。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>node -v
+ v<span class="number">0</span>.<span class="number">10.26</span>
+ <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>npm -v
+ <span class="number">1.4</span>.<span class="number">7</span> 
+</code></pre></li>
+<li><p>使用<code>npm</code>安装高大上的<code>Hexo</code></p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>sudo npm install hexo -g
+</code></pre><p> 更多问题，比如<code>如何优雅，有格调地撰写blog</code>，请访问<a href="http://hexo.io" target="_blank">Hexo</a>。</p>
+</li>
+<li><p>iOS开发必备利器，高大上的<code>cocoapods</code>，但是在安装前，请先安以下步骤做些别的准备工作，别问为什么，因为你懂的，但别忘了’感谢’<code>党</code>，‘感谢’<code>祖国</code>，感谢<code>淘宝</code>，感谢教主<code>马云</code>！</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span> gem sources --remove <span class="symbol">https:</span>/<span class="regexp">/rubygems.org/</span>
+ <span class="symbol">https:</span>/<span class="regexp">/rubygems.org/</span> removed from sources
+ <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>gem source -a <span class="symbol">http:</span>/<span class="regexp">/ruby.taobao.org/</span>
+ <span class="symbol">http:</span>/<span class="regexp">/ruby.taobao.org/</span> added to sources
+ <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>gem source
+ *** <span class="constant">CURRENT</span> <span class="constant">SOURCES</span> ***
+
+ <span class="symbol">http:</span>/<span class="regexp">/ruby.taobao.org/</span>
+</code></pre><p> 准备工作做好了，也感谢了，开始正事，安装<a href="http://cocoapods.org/" target="_blank">Cocoapods</a>。</p>
+<pre><code> <span class="constant">LIZHM</span><span class="symbol">:~</span> <span class="constant">Leezhm</span><span class="variable">$ </span>sudo gem install cocoapods
+</code></pre><p> 别以为到了这里就完事了，如果你不想一直’感谢Dang’，你就应该看看<a href="http://akinliu.github.io/2014/05/03/cocoapods-specs-/" target="_blank">Cocoapods Specs天朝镜像</a>，当然别忘记了感谢<code>阿宽</code>，另外如果你还没有用过<code>Cocoapods</code>，那我也给你附一份教程，请访问<a href="http://code4app.com/article/cocoapods-install-usage" target="_blank">CocoaPods安装和使用教程</a>，同样别忘记了感谢作者，嗯，我，你就算了，留着去’感谢Dang’吧！</p>
+</li>
+<li><p><code>Xcode</code>, <code>Dash</code>， <code>Sublime Text</code>, <code>Mou</code>等等啥的，可以另外自己安装了，很是简单。</p>
+</li>
+</ol>
+<h2 id="开启Trim">开启Trim</h2>
+<p>如果你还不知道<code>trim</code>是个啥，请访问<a href="http://en.wikipedia.org/wiki/Trim_(computing\" target="_blank">Wikipedia-Trim</a>)。</p>
+<blockquote>
+<p>请先到System Information中SATA Drive Tree中查看<code>TRIM Support</code>是否是<code>Yes</code>，如果不是就需要下面步骤，否则请跳过！</p>
+</blockquote>
+<ol>
+<li><p>为了安全，请先备份驱动(按照提示输入密码)</p>
+<pre><code> sudo <span class="keyword">cp</span> -r /System/Library/Extensions/IOAHCIFamily<span class="preprocessor">.kext</span>/Contents/PlugIns/IOAHCIBlockStorage<span class="preprocessor">.kext</span>/ /System/Library/Extensions/IOAHCIFamily<span class="preprocessor">.kext</span>/Contents/PlugIns/IOAHCIBlockStorage<span class="preprocessor">.BACKUP</span>
+</code></pre></li>
+<li><p>开始trim </p>
+<pre><code> sudo perl -pi -e 's|(<span class="command">\x</span>52<span class="command">\x</span>6F<span class="command">\x</span>74<span class="command">\x</span>61<span class="command">\x</span>74<span class="command">\x</span>69<span class="command">\x</span>6F<span class="command">\x</span>6E<span class="command">\x</span>61<span class="command">\x</span>6C<span class="command">\x</span>00<span class="special">{</span>1,20<span class="special">}</span>)<span class="special">[</span>^<span class="command">\x</span>00<span class="special">]</span><span class="special">{</span>9<span class="special">}</span>(<span class="command">\x</span>00<span class="special">{</span>1,20<span class="special">}</span><span class="command">\x</span>54)|<span class="formula">$1<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00$</span>2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
+</code></pre></li>
+</ol>
+<h2 id="安装Windows">安装Windows</h2>
+<blockquote>
+<p>啥，你再说一遍？<br>别闹了，重启开始享受全新的MBP吧！</p>
+</blockquote>
+]]></content>
+    <category scheme="http://code4fun.cn/tags/SSD/" term="SSD"/>
+    <category scheme="http://code4fun.cn/tags/Mavericks/" term="Mavericks"/>
+    <category scheme="http://code4fun.cn/categories/折腾/" term="折腾"/>
   </entry>
   <entry>
     <title type="html"><![CDATA[How to fork a repo from github]]></title>
     <link href="http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/"/>
     <id>http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/</id>
     <published>2013-09-28T14:18:22.000Z</published>
-    <updated>2014-05-03T08:26:17.000Z</updated>
+    <updated>2014-05-03T17:38:02.000Z</updated>
     <content type="html"><![CDATA[<ul>
 <li><p>Login the github and click the “Fork” button.</p>
 <p>  It’s quite simple, just clicks a button.</p>
@@ -51,14 +153,15 @@ $ git merge upstream/master
 </li>
 </ul>
 ]]></content>
-    <category scheme="http://code4fun.cn/tags/文章，Git/" term="文章，Git"/>
+    <category scheme="http://code4fun.cn/tags/Git/" term="Git"/>
+    <category scheme="http://code4fun.cn/categories/Git/" term="Git"/>
   </entry>
   <entry>
     <title type="html"><![CDATA[Explicitly Release Resources In C#]]></title>
     <link href="http://code4fun.cn/2013-09-24/explicitly-release-resources-in-c/"/>
     <id>http://code4fun.cn/2013-09-24/explicitly-release-resources-in-c/</id>
     <published>2013-09-23T17:24:06.000Z</published>
-    <updated>2013-09-28T15:00:12.000Z</updated>
+    <updated>2014-05-03T17:39:40.000Z</updated>
     <content type="html"><![CDATA[<p>According the last blog(Here), destructor cannot be called by programmers , it is invoked automatically by GC in a uncertain time.So whether it means programmers need not care about releasing resource(or GC) in C#.</p>
 <p>In general, C# do not require as much memory management as is need.This is because the .NET Framework Garbage Collector implicitly manages the allocation and release of memory for your application.However most time, a explicit and accuracy way that programmers can release memory by themselves  is necessary.For example, when your application encapsulate unmanaged resources such as a window, file, font, database connection, network connection, and so on, you will find it very useful and helpful.So how many different and explicit ways can clean up the rare and expensive external resources that using by your application?</p>
 <p>Three ways provided on MSDN,for more details about them, see the following parts.</p>
@@ -440,14 +543,16 @@ Font ft2 = <span class="keyword">new</span> Font(<span class="string">"Arial"</s
 
 <p>Of course, it is a much more complex topic of Garbage Collection in C# and there is several times contents about GC on MSDN than here.More details and comprehensive contents about Garbage Collection,see this webpage.have fun!</p>
 ]]></content>
-    <category scheme="http://code4fun.cn/tags/文章, Dispose/" term="文章, Dispose"/>
+    <category scheme="http://code4fun.cn/tags/C-Sharp/" term="C-Sharp"/>
+    <category scheme="http://code4fun.cn/tags/Dispose/" term="Dispose"/>
+    <category scheme="http://code4fun.cn/categories/C-Sharp/" term="C-Sharp"/>
   </entry>
   <entry>
     <title type="html"><![CDATA[How to resign a iOS app ?]]></title>
     <link href="http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/"/>
     <id>http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/</id>
     <published>2013-09-19T15:35:28.000Z</published>
-    <updated>2014-05-03T08:29:18.000Z</updated>
+    <updated>2014-05-03T17:40:31.000Z</updated>
     <content type="html"><![CDATA[<p>As may we know, we can distribute apps with enterprise account to any devices without add the device id into device list. This is very useful when the developers are not in the same offices or a multi-people project. So how to do that?</p>
 <h2 id="Generate_Production/Distribution_Certificates"><strong>Generate Production/Distribution Certificates</strong></h2>
 <ol>
@@ -490,14 +595,15 @@ zip -qr <span class="string">"YourApp.resigned.ipa"</span> Payload
 rm -rf Payload
 </code></pre><p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
 ]]></content>
-    <category scheme="http://code4fun.cn/tags/文章, iOS/" term="文章, iOS"/>
+    <category scheme="http://code4fun.cn/tags/iOS/" term="iOS"/>
+    <category scheme="http://code4fun.cn/categories/iOS/" term="iOS"/>
   </entry>
   <entry>
     <title type="html"><![CDATA[艳阳中秋，呆家里折腾新Blog]]></title>
     <link href="http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/"/>
     <id>http://code4fun.cn/2013-09-19/艳阳中秋，呆家里折腾新blog/</id>
     <published>2013-09-19T09:10:28.000Z</published>
-    <updated>2014-05-03T08:12:40.000Z</updated>
+    <updated>2014-05-03T17:48:29.000Z</updated>
     <content type="html"><![CDATA[<h2 id="闲扯由来">闲扯由来</h2>
 <p>之前基于<a href="http://wordpress.org/" target="_blank">wordpress</a>的blog在VPS到期后，就不想续费折腾了。在这里还是要感谢这个伟大的开源项目，你带给我了许多方便。</p>
 <p>其实我觉得我是个很懒的完美主义者，话有点不顺口，细想也不通的，但是我就是这么认为的。每每总结留在硬盘上的一篇篇未写完的blog，理由就是排版这么烂，发上去也需要再排，而且还复杂，不好看。故因为不完美，所以放弃了。曾经有一段时间我就去折腾CSS，但很快发现也没那么容易折腾，花了时间还来不了效果。</p>
@@ -508,11 +614,15 @@ rm -rf Payload
 <li><p>Github</p>
 <p>  绝大部分程序猿肯定都知道<a href="https://github.com" target="_blank">Github</a>，也应该拥有自己的账号。如果没有，你现在就应该去创建一个，而且后面也需要用到这个。通过Github，我们可以很方便地分享我们的项目，进行代码管理,重构，与他人协作完成一个项目（当然如果你需要创建私人项目，你需要付费）。</p>
 <p>  但是在这里，需要用Github提供的<a href="http://pages.github.com/" target="_blank">Github Pages</a>来做我新Blog的服务器。</p>
-<pre><code>  <span class="number">1.</span> Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。
-  <span class="number">2.</span> 支持Markdown语法来发布文章
-  <span class="number">3.</span> 可以很方便地用git来<span class="keyword">add</span>, commit和<span class="keyword">push</span>我的文章。
-  <span class="number">4.</span> 对blog拥有完全的控制权。
-</code></pre></li>
+<blockquote>
+<ol>
+<li>Github Pages完全免费，无流量和空间限制，无需翻墙，墙内墙外访问速度还不错。</li>
+<li>支持Markdown语法来发布文章</li>
+<li>可以很方便地用git来add, commit和push我的文章。</li>
+<li>对blog拥有完全的控制权。</li>
+</ol>
+</blockquote>
+</li>
 <li><p>Hexo</p>
 <p>  其实<a href="http://hexo.io/" target="_blank">Hexo</a>对于我也是蛮陌生的。那为啥选择Hexo，而不选择更成熟，更多人使用的<a href="http://octopress.org/" target="_blank">Octopress</a>呢？因为我学过一段时间的<a href="http://nodejs.org/" target="_blank">Node.js</a>,更喜欢Node.js的速度，绝对比基于Ruby的Octopress快。</p>
 <blockquote>
@@ -617,6 +727,8 @@ rm -rf Payload
 <h2 id="补充">补充</h2>
 <p>如果你需要配置自己域名，请参考<a href="http://zespia.tw/hexo/docs/deployment.html" target="_blank">Hexo Custom Domain</a>以及<a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages" target="_blank">Setting up a custom domain with Pages</a>。</p>
 ]]></content>
-    <category scheme="http://code4fun.cn/tags/文章，Github Pages，Hexo/" term="文章，Github Pages，Hexo"/>
+    <category scheme="http://code4fun.cn/tags/Github Pages/" term="Github Pages"/>
+    <category scheme="http://code4fun.cn/tags/Hexo/" term="Hexo"/>
+    <category scheme="http://code4fun.cn/categories/Hexo/" term="Hexo"/>
   </entry>
 </feed>
