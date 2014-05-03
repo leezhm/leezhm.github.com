@@ -87,7 +87,7 @@
     </p>
   <p class="article-time">
     <time datetime="2013-09-19T15:35:28.000Z" itemprop="datePublished">9月 19 2013</time>
-    更新日期:<time datetime="2013-09-23T16:43:19.000Z" itemprop="dateModified">9月 24 2013</time>
+    更新日期:<time datetime="2014-05-03T08:29:18.000Z" itemprop="dateModified">5月 3 2014</time>
     
   </p>
 </header>
@@ -129,23 +129,17 @@
 <p>OK, you have finish the preparation. and next you can resign the iOS app.</p>
 <h2 id="Resign_iOS_App"><strong>Resign iOS App</strong></h2>
 <p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in “~/Downloads” folder.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="code"><pre>rm -rf Payload
+<pre><code>rm -rf Payload
 unzip YourApp<span class="preprocessor">.ipa</span>
 rm -r Payload/YourApp<span class="preprocessor">.app</span>/_CodeSignature Payload/YourApp<span class="preprocessor">.app</span>/CodeResources
 <span class="keyword">cp</span> ~/Downloads/YourApp<span class="preprocessor">.mobileprovision</span> Payload/YourApp<span class="preprocessor">.app</span>/embedded<span class="preprocessor">.mobileprovision</span>
-codesign -f -s <span class="string">"iPhone Distribution: xxxx"</span> --resource-rules <span class="string">"Payload/YourApp.app/ResourceRules.plist"</span> Payload/YourApp<span class="preprocessor">.app</span>
+
+codesign -f -s <span class="string">"iPhone Distribution: xxxx"</span> --resource-rules 
+<span class="string">"Payload/YourApp.app/ResourceRules.plist"</span> Payload/YourApp<span class="preprocessor">.app</span>
+
 zip -qr <span class="string">"YourApp.resigned.ipa"</span> Payload
 rm -rf Payload
-</pre></td></tr></table></figure>
-
-<p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
+</code></pre><p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
   
 	</div>
 		<footer class="article-footer clearfix">

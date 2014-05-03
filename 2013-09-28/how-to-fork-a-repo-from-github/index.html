@@ -9,13 +9,11 @@
     
     <meta name="author" content="leezhm">
     
-    <meta name="description" content="How to fork a repo from github?
-
-Login the github and click the “Fork” button.
-It’s quite simple, just clicks a button.
+    <meta name="description" content="Login the github and click the “Fork” button.
+  It’s quite simple, just clicks a button.
 
 Clone your fork
-Make sure it’">
+  Make sure it’s your fork. For example, I h">
     
     
     
@@ -93,7 +91,7 @@ Make sure it’">
     </p>
   <p class="article-time">
     <time datetime="2013-09-28T14:18:22.000Z" itemprop="datePublished">9月 28 2013</time>
-    更新日期:<time datetime="2013-09-28T15:23:52.000Z" itemprop="dateModified">9月 28 2013</time>
+    更新日期:<time datetime="2014-05-03T08:26:17.000Z" itemprop="dateModified">5月 3 2014</time>
     
   </p>
 </header>
@@ -102,53 +100,34 @@ Make sure it’">
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#How_to_fork_a_repo_from_github?"><span class="toc-number">1.</span> <span class="toc-text">?</em></span></a></li></ol>
+		
 		</div>
 		
-		<h3 id="How_to_fork_a_repo_from_github?"><em>How to fork a repo from <a href="http://www.github.com" target="_blank">github</a>?</em></h3>
-<ol>
+		<ul>
 <li><p>Login the github and click the “Fork” button.</p>
-<p>It’s quite simple, just clicks a button.</p>
+<p>  It’s quite simple, just clicks a button.</p>
 </li>
 <li><p>Clone your fork</p>
-<p>Make sure it’s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
-</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>   <span class="comment"># Clone your fork</span>
-   <span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git</span>
-</pre></td></tr></table></figure>
-
-
-<ol>
+<p>  Make sure it’s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
+<pre><code><span class="comment"># Clone your fork</span>
+<span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git</span>
+</code></pre></li>
 <li><p>Configurate remotes</p>
-<p>If you want to sync your fork with its origin master repo,you should add another remote called <strong>upstream</strong></p>
-</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td><td class="code"><pre>   # Change the active directory
-   $ cd rgbdemo
-   
-   # Add the upstream url    
-   $ git remote add upstream https://github.com/nburrus/rgbdemo.git
-   
-   # Keeping <span class="operator"><span class="keyword">update</span> <span class="keyword">with</span> the upstream <span class="keyword">and</span> merges <span class="keyword">any</span> changes fetched <span class="keyword">into</span> your working files
-   $ git <span class="keyword">fetch</span> upstream
-   $ git <span class="keyword">merge</span> upstream/master</span>
-</pre></td></tr></table></figure>
+<p> If you want to sync your fork with its origin master repo,you should add another remote called <strong>upstream</strong></p>
+<pre><code><span class="preprocessor"># Change the active directory</span>
+$ cd rgbdemo
 
-<ol>
-<li>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</li>
-</ol>
+<span class="preprocessor"># Add the upstream url    </span>
+$ git remote add upstream https:<span class="comment">//github.com/nburrus/rgbdemo.git</span>
+
+<span class="preprocessor"># Keeping update with the upstream and merges any changes fetched </span>
+<span class="preprocessor"># into your working files</span>
+$ git fetch upstream
+$ git merge upstream/master
+</code></pre></li>
+<li><p>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</p>
+</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -201,7 +180,7 @@ Make sure it’">
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#How_to_fork_a_repo_from_github?"><span class="toc-number">1.</span> <span class="toc-text">?</em></span></a></li></ol>
+  
   </div>
 
 <div id="asidepart">

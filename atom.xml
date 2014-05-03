@@ -4,7 +4,7 @@
   <subtitle><![CDATA[I Share, therefore I am]]></subtitle>
   <link href="http://code4fun.cn/atom.xml" rel="self"/>
   <link href="http://code4fun.cn"/>
-  <updated>2014-05-03T08:15:34.749Z</updated>
+  <updated>2014-05-03T08:30:17.652Z</updated>
   <id>http://code4fun.cn/</id>
   <author>
     <name><![CDATA[leezhm]]></name>
@@ -24,51 +24,32 @@
     <link href="http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/"/>
     <id>http://code4fun.cn/2013-09-28/how-to-fork-a-repo-from-github/</id>
     <published>2013-09-28T14:18:22.000Z</published>
-    <updated>2013-09-28T15:23:52.000Z</updated>
-    <content type="html"><![CDATA[<h3 id="How_to_fork_a_repo_from_github?"><em>How to fork a repo from <a href="http://www.github.com" target="_blank">github</a>?</em></h3>
-<ol>
+    <updated>2014-05-03T08:26:17.000Z</updated>
+    <content type="html"><![CDATA[<ul>
 <li><p>Login the github and click the “Fork” button.</p>
-<p>It’s quite simple, just clicks a button.</p>
+<p>  It’s quite simple, just clicks a button.</p>
 </li>
 <li><p>Clone your fork</p>
-<p>Make sure it’s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
-</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>   <span class="comment"># Clone your fork</span>
-   <span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git</span>
-</pre></td></tr></table></figure>
-
-
-<ol>
+<p>  Make sure it’s your fork. For example, I had forked the project <a href="https://github.com/nburrus/rgbdemo" target="_blank">nburrus/rgbdemo</a>,and now my own fork is <a href="https://github.com/leezhm/rgbdemo" target="_blank">leezhm/rgbdemo</a>.So you can clone your fork.</p>
+<pre><code><span class="comment"># Clone your fork</span>
+<span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/leezhm</span><span class="regexp">/rgbdemo.git</span>
+</code></pre></li>
 <li><p>Configurate remotes</p>
-<p>If you want to sync your fork with its origin master repo,you should add another remote called <strong>upstream</strong></p>
-</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td><td class="code"><pre>   # Change the active directory
-   $ cd rgbdemo
-   
-   # Add the upstream url    
-   $ git remote add upstream https://github.com/nburrus/rgbdemo.git
-   
-   # Keeping <span class="operator"><span class="keyword">update</span> <span class="keyword">with</span> the upstream <span class="keyword">and</span> merges <span class="keyword">any</span> changes fetched <span class="keyword">into</span> your working files
-   $ git <span class="keyword">fetch</span> upstream
-   $ git <span class="keyword">merge</span> upstream/master</span>
-</pre></td></tr></table></figure>
+<p> If you want to sync your fork with its origin master repo,you should add another remote called <strong>upstream</strong></p>
+<pre><code><span class="preprocessor"># Change the active directory</span>
+$ cd rgbdemo
 
-<ol>
-<li>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</li>
-</ol>
+<span class="preprocessor"># Add the upstream url    </span>
+$ git remote add upstream https:<span class="comment">//github.com/nburrus/rgbdemo.git</span>
+
+<span class="preprocessor"># Keeping update with the upstream and merges any changes fetched </span>
+<span class="preprocessor"># into your working files</span>
+$ git fetch upstream
+$ git merge upstream/master
+</code></pre></li>
+<li><p>Nowadays,you can push/pull your own code to your fork, and sync with origin repo.</p>
+</li>
+</ul>
 ]]></content>
     <category scheme="http://code4fun.cn/tags/文章，Git/" term="文章，Git"/>
   </entry>
@@ -466,7 +447,7 @@ Font ft2 = <span class="keyword">new</span> Font(<span class="string">"Arial"</s
     <link href="http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/"/>
     <id>http://code4fun.cn/2013-09-19/How_to_resign_a_iOS_app/</id>
     <published>2013-09-19T15:35:28.000Z</published>
-    <updated>2013-09-23T16:43:19.000Z</updated>
+    <updated>2014-05-03T08:29:18.000Z</updated>
     <content type="html"><![CDATA[<p>As may we know, we can distribute apps with enterprise account to any devices without add the device id into device list. This is very useful when the developers are not in the same offices or a multi-people project. So how to do that?</p>
 <h2 id="Generate_Production/Distribution_Certificates"><strong>Generate Production/Distribution Certificates</strong></h2>
 <ol>
@@ -497,23 +478,17 @@ Font ft2 = <span class="keyword">new</span> Font(<span class="string">"Arial"</s
 <p>OK, you have finish the preparation. and next you can resign the iOS app.</p>
 <h2 id="Resign_iOS_App"><strong>Resign iOS App</strong></h2>
 <p>Before execute the following commands in your Terminal tool one by one., please make the <em>.ipa file, </em>.mobileprovision file in the same folder. for example, put all file in “~/Downloads” folder.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="code"><pre>rm -rf Payload
+<pre><code>rm -rf Payload
 unzip YourApp<span class="preprocessor">.ipa</span>
 rm -r Payload/YourApp<span class="preprocessor">.app</span>/_CodeSignature Payload/YourApp<span class="preprocessor">.app</span>/CodeResources
 <span class="keyword">cp</span> ~/Downloads/YourApp<span class="preprocessor">.mobileprovision</span> Payload/YourApp<span class="preprocessor">.app</span>/embedded<span class="preprocessor">.mobileprovision</span>
-codesign -f -s <span class="string">"iPhone Distribution: xxxx"</span> --resource-rules <span class="string">"Payload/YourApp.app/ResourceRules.plist"</span> Payload/YourApp<span class="preprocessor">.app</span>
+
+codesign -f -s <span class="string">"iPhone Distribution: xxxx"</span> --resource-rules 
+<span class="string">"Payload/YourApp.app/ResourceRules.plist"</span> Payload/YourApp<span class="preprocessor">.app</span>
+
 zip -qr <span class="string">"YourApp.resigned.ipa"</span> Payload
 rm -rf Payload
-</pre></td></tr></table></figure>
-
-<p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
+</code></pre><p>If there is not any error, you are successful. Please install the app to you iOS device and test it.</p>
 ]]></content>
     <category scheme="http://code4fun.cn/tags/文章, iOS/" term="文章, iOS"/>
   </entry>
