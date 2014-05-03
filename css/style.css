@@ -113,7 +113,7 @@ a img {
 body {
   background: #ddd;
   font-family: "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
-  font-size: 100%;
+  font-size: 96%;
   color: #817c7c;
   line-height: 1.5;
 }
@@ -455,19 +455,19 @@ body >header a {
 #textlogo h1.site-name {
   width: 86%;
   font-family: "covered_by_your_graceregular";
-  font-size: 200%;
+  font-size: 196%;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 @media only screen and (min-width: 768px) {
   #textlogo h1.site-name {
-    font-size: 240%;
+    font-size: 236%;
   }
 }
 @media only screen and (min-width: 1024px) {
   #textlogo h1.site-name {
-    font-size: 280%;
+    font-size: 276%;
   }
 }
 #textlogo h2.blog-motto {
@@ -476,12 +476,12 @@ body >header a {
 }
 @media only screen and (min-width: 768px) {
   #textlogo h2.blog-motto {
-    font-size: 100%;
+    font-size: 96%;
   }
 }
 @media only screen and (min-width: 1024px) {
   #textlogo h2.blog-motto {
-    font-size: 110%;
+    font-size: 106%;
   }
 }
 .navbar {
@@ -508,7 +508,7 @@ body >header a {
 header nav {
   float: left;
   width: 100%;
-  font-size: 112.5%;
+  font-size: 108.5%;
   padding-top: 0.5em;
   max-height: 0.01em;
   -webkit-transition: max-height 1s ease-out;
@@ -718,7 +718,7 @@ header nav ul li a:hover {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ccc;
-  font-size: 100%;
+  font-size: 96%;
   padding-right: 0.3em;
 }
 .category-icon:before {
@@ -748,7 +748,7 @@ header nav ul li a:hover {
 .archive-title h2 {
   width: 90%;
   color: #2ca6cb;
-  font-size: 120%;
+  font-size: 116%;
 }
 .archive-title a {
   color: #2ca6cb;
@@ -825,7 +825,7 @@ header nav ul li a:hover {
 }
 article header.article-info >h1 {
   padding: 0.2em 3%;
-  font-size: 170%;
+  font-size: 166%;
   line-height: 1.5;
   word-wrap: break-word;
   word-break: normal;
@@ -835,7 +835,7 @@ article header.article-info >h1 {
 }
 @media only screen and (min-width: 1024px) {
   article header.article-info >h1 {
-    font-size: 200%;
+    font-size: 196%;
     padding-top: 0.3em;
   }
 }
@@ -865,7 +865,7 @@ article header.article-info >p.article-time {
 }
 article header.article-info >p.article-time:before {
   font-family: "FontAwesome";
-  font-size: 130%;
+  font-size: 126%;
   content: "\f017";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -890,14 +890,14 @@ article .article-content .kb {
 }
 article .article-content h1,
 article .article-content h2 {
-  font-size: 180%;
+  font-size: 176%;
   line-height: 1.2em;
 }
 article .article-content h3,
 article .article-content h4,
 article .article-content h5,
 article .article-content h6 {
-  font-size: 140%;
+  font-size: 136%;
 }
 article .article-content h1,
 article .article-content h2,
@@ -935,7 +935,7 @@ article .article-content blockquote {
   margin: 0.65em 0 0.65em 4%;
   padding-left: 1%;
   line-height: 1.5;
-  font-size: 110%;
+  font-size: 106%;
 }
 article .article-content blockquote footer {
   background: #fafafa;
@@ -951,7 +951,7 @@ article .article-content blockquote cite {
 article .article-content ul,
 article .article-content ol {
   padding-left: 2em;
-  font-size: 105%;
+  font-size: 101%;
 }
 @media only screen and (min-width: 768px) {
   article .article-content ul,
@@ -987,13 +987,13 @@ article .article-content em code {
   text-shadow: 0 1px #fff;
 }
 article .article-content p {
-  font-size: 105%;
+  font-size: 101%;
   line-height: 1.7;
-  margin: 0.7em 0;
+  margin: 0.5em 0;
 }
 @media only screen and (min-width: 1024px) {
   article .article-content p {
-    margin: 1.2em 0;
+    margin: 0.8em 0;
   }
 }
 article .article-content img,
@@ -1116,7 +1116,7 @@ footer.article-footer {
   position: relative;
 }
 .share a:before {
-  font-size: 100%;
+  font-size: 96%;
   font-family: "FontAwesome";
   text-align: center;
   color: #817c7c;
@@ -1814,7 +1814,7 @@ footer {
   font-family: "covered_by_your_graceregular";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 150%;
+  font-size: 146%;
   line-height: 1.3em;
   width: 90%;
   margin: 0 auto;
@@ -1851,7 +1851,7 @@ footer {
   display: block;
   width: 14%;
   color: #fff;
-  font-size: 180%;
+  font-size: 176%;
   padding: 0.5em;
 }
 @media only screen and (min-width: 1024px) {
@@ -1903,20 +1903,20 @@ footer {
 }
 .article-content pre,
 .article-content .highlight {
-  background: #1d1f21;
+  background: #002b36;
   margin: 0.5em 0;
   padding: 1em 2%;
   overflow: auto;
   color: #c5c8c6;
   line-height: 1.5;
-  font-size: 100%;
+  font-size: 96%;
 }
 .article-content .highlight .gutter pre,
 .article-content .gist .gist-file .gist-data .line-numbers {
   color: #666;
   font-size: 0.85em;
   line-height: 1.5;
-  font-size: 100%;
+  font-size: 96%;
 }
 .article-content pre {
   font-family: Monaco, Menlo, Consolas, Courier New, monospace;
@@ -1965,7 +1965,7 @@ footer {
 }
 .article-content .gist {
   margin: 0.5em 0;
-  background: #1d1f21;
+  background: #002b36;
   padding: 1em 2%;
 }
 .article-content .gist .gist-file {
@@ -1991,7 +1991,7 @@ footer {
   border: none;
 }
 .article-content .gist .gist-file .gist-meta {
-  background: #1d1f21;
+  background: #002b36;
   color: #969896;
   font: 0.85em "Georgia", serif;
   padding: 0;
