@@ -401,7 +401,7 @@ body >header {
 }
 @media only screen and (min-width: 1024px) {
   body >header {
-    padding: 1.8em 0 1.5em;
+    padding: 1.5em 0 1.5em;
   }
 }
 body >header >div {
@@ -449,7 +449,7 @@ body >header a {
 }
 #textlogo {
   float: left;
-  width: 75%;
+  width: 50%;
   margin-left: 0.5em;
 }
 #textlogo h1.site-name {
@@ -526,7 +526,7 @@ header nav {
   header nav {
     float: right;
     width: auto;
-    margin-top: 1em;
+    margin-top: 2.5em;
     max-height: none;
   }
 }
@@ -559,7 +559,7 @@ header nav ul li a:hover {
   padding: 0.1em 0 0 1em;
 }
 .search input {
-  line-height: 1.7;
+  line-height: 2;
   border: 1px solid #fff;
   color: #fff;
   background: transparent;
@@ -652,7 +652,16 @@ header nav ul li a:hover {
   color: #817c7c;
   display: block;
   margin: 0.5em 0;
-  font-size: 0.5em;
+  font-size: 0.9em;
+}
+#main section.post a #archive-page section.post a {
+  font-size: 0.9em;
+  padding: 0.5em !important;
+}
+@media only screen and (min-width: 768px) {
+  #main section.post a #archive-page section.post a time {
+    padding-left: 1em;
+  }
 }
 .moveMain {
   margin-left: 10% !important;
@@ -784,15 +793,18 @@ header nav ul li a:hover {
 .archive-part section.post {
   width: 100%;
 }
-@media only screen and (min-width: 768px) {
-  .archive-part section.post {
-    float: left;
-    width: 50%;
+.archive-part section.post time {
+  font-size: 1.1em !important;
+  float: left;
+}
+@media phonemax {
+  .archive-part section.post time {
+    width: 100%;
   }
 }
 @media only screen and (min-width: 1024px) {
-  .archive-part section.post {
-    width: 33.333%;
+  .archive-part section.post time {
+    width: 20%;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -1395,14 +1407,18 @@ section.comment {
 }
 .toc-article {
   background: #eee;
-  margin: 2em 0 0 0.5em;
+  margin: 1.6em 0 0 2em;
   padding: 1em;
+  -webkit-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 .toc-article strong {
   padding: 0.3em 0;
 }
 #toc {
-  line-height: 1em;
+  line-height: 1.2em;
   font-size: 0.8em;
   float: right;
 }
@@ -1896,7 +1912,7 @@ footer {
   }
 }
 .copyright a {
-  color: #fff;
+  color: #2ca6cb;
 }
 .copyright a:hover {
   color: #2ca6cb;

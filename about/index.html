@@ -24,8 +24,8 @@
     <link rel="icon" href="/img/favicon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon" href="/img/funmain.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/funmain.jpg">
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     
@@ -54,13 +54,13 @@
 				<ul>
 					<ul>
 					 
-						<li><a href="/">Home</a></li>
+						<li><a href="/">首页</a></li>
 					
-						<li><a href="/archives">Archives</a></li>
+						<li><a href="/archives">归档</a></li>
 					
-						<li><a href="/atom.xml">Rss</a></li>
+						<li><a href="/atom.xml">订阅</a></li>
 					
-						<li><a href="/about">About</a></li>
+						<li><a href="/about">关于</a></li>
 					
 					<li>
 					
@@ -97,7 +97,7 @@
 	<div class="article-content">
 		
 		
-		<ul>
+			<ul>
 <li><h3 id="自我介绍">自我介绍</h3>
 <p> 老李，一直混迹于各大技术论坛,乐于解答别人的问题，并从中学习或者加深自己对知识的理解。现就业于一家国内私企，进行iOS平台开发，担任公司技术总监。 </p>
 <p> 欢迎各位光临，来者不拒。有幸在编程领域徘徊了几年，属于典型的为了项目东搞搞西搞搞（C、C++、.NET、WPF、MySql、AS3、Node.js、Objective-C），可惜没啥建树,偶捶胸顿足，面壁思过，也偶有所得。以前一直混迹于CSDN，但是新版本blog的确让我无语，故决定转战博客园，顺便仰慕各位大虾，潜心修行，更修心。</p>
@@ -116,7 +116,7 @@
 </li>
 </ul>
   
-	</div>
+		</div>
 		<footer class="article-footer clearfix">
 
 
@@ -124,8 +124,22 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://code4fun.cn/about/index.html" data-title="About | Code For Fun" data-tsina="null" class="share clearfix">
-  </div>
+  
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_tsina">微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a class="jiathis_button_ydnote">有道云笔记</a>
+    <a href="http://www.jiathis.com/share?uid=1526871" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1526871" charset="utf-8"></script>
+<!-- JiaThis Button END -->     
+
 
 </div>
 </footer>   	       
@@ -142,7 +156,11 @@
 	
 	<div class="line">
 		<span></span>
-		<div class="author"></div>
+				
+		
+		<a href="http://weibo.com/leezhm" target="_blank"><div class="author"></div></a>
+		
+		
 	</div>
 	
 	
@@ -216,34 +234,6 @@ $(document).ready(function(){
 });
 </script>
 
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
-  });
-});     
-</script>
 
 
 <script type="text/javascript">
